@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang = "pt-BR">
+
+    <head>
+       <meta charset = "UTF-8">
+       <meta name="description" content="Agendamento de consulta">
+       <title>Agendamento</title> 
+    </head> 
+
+    <body>
+        <!-- Cabeçalho principal, presente em todas as páginas-->
+        <header>
+            <h1>Clínica</h1>
+        </header>
+
+        <!--Menu de naveção, com links para todas as páginas-->
+        <nav>
+            <ul>
+                <li><a href = "">Home</a></li>
+                <li><a href = "">Galeria</a></li>
+                <li><a href = "">Novo Endereço</a></li>
+                <!--
+                    <li><a href = "">Login</a></li>
+                -->
+                <li><a href = "">Agendamento</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <form>
+                <fieldset>
+                    <legend>Agendamento de consulta</legend>
+                    <div>
+                        <label for = "especialidade">Especialidade: </label>
+                        <select id = "especialidade" name="especialidade">
+                            <option value = "" > ""    
+                        </select>
+                    </div>
+                    <div>
+                        <label for = "nome">Nome: </label>
+                        <select id = "nome" name="nome">
+                            <option value = "" > ""    
+                        </select>
+                    </div>
+                    <div>
+                        <label for="data">Data: </label>
+                        <input type="date" id="data" name="data">
+                    </div>
+                    <div>
+                        <label for="horario">Horário: </label>
+                        <select id = "horario" name="horario">
+                            <option value = "" > ""    
+                        </select>
+                    </div>
+                    <div>
+                        <label for = "nome">Nome:</label>
+                        <input type = "text" id = "nome" name = "nome" required>
+                    </div>
+                    <div>
+                        <label for = "email">E-mail:</label>
+                        <input type = "email" id = "email" name = "email" required>
+                    </div>
+                    <div>
+                        <label>Sexo:</label>
+                        <input type = "radio" name = "sexo" value = "feminino" checked> Feminino
+                        <input type = "radio" name = "sexo" value = "masculino"> Masculino
+                    </div>
+                </fieldset>
+            </form>
+        </main>
+       
+        <!--Rodapé-->
+        <footer>
+            <p>© Copyright 2021. Todos os direitos reservados</p>
+        </footer>
+
+    </body>
+
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang = "pt-BR">
+
+    <head>
+       <meta charset = "UTF-8">
+       <meta name="description" content="Cadastro de Endereço">
+       <title>Cadastro de Endereço</title> 
+    </head> 
+
+    <body>
+        <!-- Cabeçalho principal, presente em todas as páginas-->
+        <header>
+            <h1>Clínica</h1>
+        </header>
+
+        <!--Menu de naveção, com links para todas as páginas-->
+        <nav>
+            <ul>
+                <li><a href = "">Home</a></li>
+                <li><a href = "">Galeria</a></li>
+                <li><a href = "">Novo Endereço</a></li>
+                <!--
+                    <li><a href = "">Login</a></li>
+                -->
+                <li><a href = "">Agendamento</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <form action = "cadastro.php" method = "post" enctype="multipart/form-data">
+                <fieldset>
+                    <legend>Endereço</legend>
+                    <div>
+                        <label for = "cep">CEP:</label>
+                        <input type = "text" id = "cep" name = "cep" pattern="\d{5}-d{3}" required>
+                    </div>
+                    <div>
+                        <label for = "tipologradouro">Tipo de Logradouro:</label>
+                        <select id = "tipologradouro" name = "tipologradouro" required>
+                            <option value="">Escolha</option>
+                            <option value = "rua"> Rua
+                            <option value = "avenida"> Avenida
+                            <option value = "praça"> Praça
+                        </select>
+                    </div>
+                    <div>
+                        <label for = "cidade">Cidade:</label>
+                        <input type = "text" id = "cidade" name = "cidade" required>
+                    </div>
+                    <div>
+                        <label for = "estado">Estado:</label>
+                        <input type = "text" id = "estado" name = "estado" pattern = "{A-Za-z}{2}" required>
+                    </div>
+                </fieldset>
+            </form>
+        </main>
+       
+        <!--Rodapé-->
+        <footer>
+            <p>© Copyright 2021. Todos os direitos reservados</p>
+        </footer>
+
+    </body>
+
+
+</html>
