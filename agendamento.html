@@ -11,6 +11,7 @@
         <!-- Cabeçalho principal, presente em todas as páginas-->
         <header>
             <h1>Clínica Aquae Vitae</h1>
+            <img src="imagens/logotype.png" width="200" height="200" alt="logotipo da Clínica Aquae Vitae"> 
         </header>
 
         <!--Menu de naveção, com links para todas as páginas-->
@@ -33,50 +34,48 @@
         </nav>
 
         <main>
+            <h2>Agendamento de Consulta</h2>
             <form>
                 <fieldset>
-                    <legend>Agendamento de Consulta</legend>
-                    <fieldset>
-                        <legend>Dados da consulta</legend>
-                        <div>
-                            <label for = "especialidade">Especialidade: </label>
-                            <select id = "especialidade" name="especialidade">
-                                <option value = "" > ""    
-                            </select>
-                        </div>
-                        <div>
-                            <label for = "nome">Nome: </label>
-                            <select id = "nome" name="nome">
-                                <option value = "" > ""    
-                            </select>
-                        </div>
-                        <div>
-                            <label for="data">Data: </label>
-                            <input type="date" id="data" name="data">
-                        </div>
-                        <div>
-                            <label for="horario">Horário: </label>
-                            <select id = "horario" name="horario">
-                                <option value = "" > ""    
-                            </select>
-                        </div>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Dados do Paciente</legend>
-                        <div>
-                            <label for = "nome">Nome:</label>
-                            <input type = "text" id = "nome" name = "nome" required>
-                        </div>
-                        <div>
-                            <label for = "email">E-mail:</label>
-                            <input type = "email" id = "email" name = "email" required>
-                        </div>
-                        <div>
-                            <label>Sexo:</label>
-                            <input type = "radio" name = "sexo" value = "feminino" checked> Feminino
-                            <input type = "radio" name = "sexo" value = "masculino"> Masculino
-                        </div>
-                    </fieldset>
+                    <legend>Dados da consulta</legend>
+                    <div>
+                        <label for = "especialidade">Especialidade: </label>
+                        <select id = "especialidade" name="especialidade">
+                            <option value = "" > ""    
+                        </select>
+                    </div>
+                    <div>
+                        <label for = "nome">Nome: </label>
+                        <select id = "nome" name="nome">
+                            <option value = "" > ""    
+                        </select>
+                    </div>
+                    <div>
+                        <label for="data">Data: </label>
+                        <input type="date" id="data" name="data">
+                    </div>
+                    <div>
+                        <label for="horario">Horário: </label>
+                        <select id = "horario" name="horario">
+                            <option value = "" > ""    
+                        </select>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Dados do Paciente</legend>
+                    <div>
+                        <label for = "nome">Nome:</label>
+                        <input type = "text" id = "nome" name = "nome" required>
+                    </div>
+                    <div>
+                        <label for = "email">E-mail:</label>
+                        <input type = "email" id = "email" name = "email" required>
+                    </div>
+                    <div>
+                        <label>Sexo:</label>
+                        <input type = "radio" name = "sexo" value = "feminino" checked> Feminino
+                        <input type = "radio" name = "sexo" value = "masculino"> Masculino
+                    </div>
                 </fieldset>
             </form>
         </main>

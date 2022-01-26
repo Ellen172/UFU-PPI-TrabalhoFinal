@@ -11,6 +11,7 @@
         <!-- Cabeçalho principal, presente em todas as páginas-->
         <header>
             <h1>Clínica Aquae Vitae</h1>
+            <img src="imagens/logotype.png" width="200" height="200" alt="logotipo da Clínica Aquae Vitae"> 
         </header>
 
         <!--Menu de naveção, com links para todas as páginas-->
@@ -33,9 +34,11 @@
         </nav>
 
         <main>
+            <h2>Cadastro de Endereço</h2>
+
             <form action = "cadastro.php" method = "post" enctype="multipart/form-data">
                 <fieldset>
-                    <legend>Endereço</legend>
+                    <legend>Dados do Endereço</legend>
                     <div>
                         <label for = "cep">CEP:</label>
                         <input type = "text" id = "cep" name = "cep" pattern="\d{5}-\d{3}.*" placeholder="xxxxx-xxx" required>
