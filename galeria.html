@@ -8,19 +8,36 @@
     <title>Galeria de fotos</title>
     <style>
         header {
+            background-color: rgb(236, 251, 252);
+            padding: 5px;
+            width: 100%;
+            text-align: center;
+        }
+        .logo {
+            width: 120px;
+        }
+        .navbar {
+            width: 100%;
             display: block;
         }
     </style>
 </head>
 <body>
+    
     <!-- Cabeçalho principal, presente em todas as páginas-->
     <header>
-        <h1>Clínica Aquae Vitae</h1>
-        <img src="imagens/logotype.png" width="200" height="200" alt="logotipo da Clínica Aquae Vitae"> 
+        <div class="row">
+            <div class="col-10">
+                <h1>Clínica Aquae Vitae</h1>
+            </div>
+            <div class="col-2">
+                <img src="imagens/logotype.png" class="logo" alt="logotipo da Clínica Aquae Vitae"> 
+            </div>
+        </div>
     </header>
-
+        
     <!--Menu de naveção, com links para todas as páginas-->
-    <nav class="navbar navbar-light">
+    <nav class="navbar">
         <ul class="nav nav-tabs">
             <li class="nav-item"><a class="nav-link" href = "./index.html">Home</a></li>
             <li class="nav-item"><a class="nav-link active" href = "./galeria.html">Galeria</a></li>
@@ -42,35 +59,37 @@
             </li>
         </ul>
     </nav>
-
-    <main>  
-        <h2>Galeria</h2>
-        <div>     
-            <h3>Quadro de Médicos</h3>         
-            <img src="./imagens/medico1.jpg" width="300px">
-            <img src="./imagens/medico2.jpg" width="300px">
-            <img src="./imagens/medico3.jpg" width="300px">
-            <h3>Centro de Odontologia</h3>         
-            <img src="./imagens/dentista1.jpg" width="300px">
-            <img src="./imagens/dentista2.jpg" width="300px">
-            <img src="./imagens/dentista3.jpg" width="300px">
-            <h3>Centro Cirúrgico</h3>         
-            <img src="./imagens/cirurgia1.jpg" width="300px">
-            <img src="./imagens/cirurgia2.jpg" width="300px">
-            <img src="./imagens/cirurgia3.jpg" width="300px">
-            <h3>Centro de Vacinação</h3>         
-            <img src="./imagens/vacina1.jpg" width="300px">
-            <img src="./imagens/vacina2.jpg" width="300px">
-            <img src="./imagens/vacina3.jpg" width="300px">
-        </div>
         
-    </main>
-
-    <!--Rodapé-->
-    <footer>
-        <p>© Copyright 2021. Todos os direitos reservados</p>
-    </footer>
+    <div class="container-fluid">
+        <main>  
+            <h2>Galeria</h2>
+            <div>     
+                <h3>Quadro de Médicos</h3>         
+                <img src="./imagens/medico1.jpg" width="300px">
+                <img src="./imagens/medico2.jpg" width="300px">
+                <img src="./imagens/medico3.jpg" width="300px">
+                <h3>Centro de Odontologia</h3>         
+                <img src="./imagens/dentista1.jpg" width="300px">
+                <img src="./imagens/dentista2.jpg" width="300px">
+                <img src="./imagens/dentista3.jpg" width="300px">
+                <h3>Centro Cirúrgico</h3>         
+                <img src="./imagens/cirurgia1.jpg" width="300px">
+                <img src="./imagens/cirurgia2.jpg" width="300px">
+                <img src="./imagens/cirurgia3.jpg" width="300px">
+                <h3>Centro de Vacinação</h3>         
+                <img src="./imagens/vacina1.jpg" width="300px">
+                <img src="./imagens/vacina2.jpg" width="300px">
+                <img src="./imagens/vacina3.jpg" width="300px">
+            </div>
+            
+        </main>
     
+        <!--Rodapé-->
+        <footer>
+            <p>© Copyright 2021. Todos os direitos reservados</p>
+        </footer>
+    
+    </div>
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
