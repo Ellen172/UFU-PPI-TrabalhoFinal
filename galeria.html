@@ -1,105 +1,98 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Galeria de fotos">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="./js/script_bootstrap.js"></script>
     <link rel="stylesheet" href="./css/style.css">
+
     <title>Galeria de fotos</title>
 </head>
+
 <body>
-    
+
     <!-- Cabeçalho principal, presente em todas as páginas-->
     <header>
         <h1>Clínica Aquae Vitae</h1>
-        <img src="imagens/logotype.png" class="logo" alt="logotipo da Clínica Aquae Vitae">
+        <img src="imagens/logotype.png" width="200" height="200" alt="logotipo da Clínica Aquae Vitae">
     </header>
-        
+
     <!--Menu de naveção, com links para todas as páginas-->
-    <nav class="navbar">
+    <nav class="navbar navbar-light">
         <ul class="nav nav-tabs">
-            <li class="nav-item"><a class="nav-link" href = "./index.html">Home</a></li> <!-- acesso ao público em geral-->
-            <li class="nav-item"><a class="nav-link active" href = "./galeria.html">Galeria</a></li> <!-- acesso ao público em geral-->
-            <li class="nav-item"><a class="nav-link" href = "./login.html">Login</a></li> <!-- acesso ao público em geral-->
-            <li class="nav-item"><a class="nav-link" href = "./agendamento.html">Agendamento</a></li> <!-- acesso ao público em geral-->
-            <!-- restrito-->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="true">Cadastro</a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href = "./cad_funcionario.html">Novo Funcionario</a></li> <!-- acesso restrito -->
-                    <li><a class="dropdown-item" href = "./cad_paciente.html">Novo Paciente</a></li> <!-- acesso restrito -->
-                    <li><a class="dropdown-item" href = "./cad_endereco.html">Novo Endereço</a></li> <!-- acesso ao público em geral-->
-                    <li><a class="dropdown-item" href = "">Listar Funcionarios</a></li> <!-- acesso restrito -->
-                    <li><a class="dropdown-item" href = "">Listar Pacientes</a></li> <!-- acesso restrito -->
-                    <li><a class="dropdown-item" href = "">Listar Endereços</a></li> <!-- acesso restrito -->
-                    <li><a class="dropdown-item" href = "">Listar Agendamentos das Consultas dos Clientes</a></li> <!-- acesso restrito -->
-                    <li><a class="dropdown-item" href = "">Listar Meus Agendamentos e Consultas</a></li> <!-- acesso restrito para medicos--> 
-                </ul>
-            </li>
+            <li class="nav-item"><a class="nav-link" href="./index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link active" href="./galeria.html">Galeria</a></li>
+            <li class="nav-item"><a class="nav-link" href="./agendamento.html">Agendamento</a></li>
+            <li class="nav-item"><a class="nav-link" href="./cad_endereco.html">Novo Endereço</a></li>
+            <li class="nav-item"><a class="nav-link" href="./login.html">Login</a></li>
         </ul>
     </nav>
-        
+
     <div class="container-fluid">
-        <main>  
+        <main>
             <h2>Galeria</h2>
 
             <div id="carouselGaleria" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
-                  <button type="button" data-bs-target="#carouselGaleria" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                  <button type="button" data-bs-target="#carouselGaleria" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                  <button type="button" data-bs-target="#carouselGaleria" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                  <button type="button" data-bs-target="#carouselGaleria" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                    <button type="button" data-bs-target="#carouselGaleria" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselGaleria" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselGaleria" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselGaleria" data-bs-slide-to="3"
+                        aria-label="Slide 4"></button>
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <h3>Quadro de Médicos</h3> 
+                        <h3>Quadro de Médicos</h3>
                         <!-- <img src="..." class="d-block w-100" alt="..."> -->
                         <img src="./imagens/medico1.jpg" class="img-galery">
                         <img src="./imagens/medico2.jpg" class="img-galery">
                         <img src="./imagens/medico3.jpg" class="img-galery">
                     </div>
                     <div class="carousel-item">
-                        <h3>Centro de Odontologia</h3> 
+                        <h3>Centro de Odontologia</h3>
                         <!-- <img src="..." class="d-block w-100" alt="..."> -->
                         <img src="./imagens/dentista1.jpg" class="img-galery">
                         <img src="./imagens/dentista2.jpg" class="img-galery">
                         <img src="./imagens/dentista3.jpg" class="img-galery">
                     </div>
                     <div class="carousel-item">
-                        <h3>Centro Cirúrgico</h3>   
+                        <h3>Centro Cirúrgico</h3>
                         <!-- <img src="..." class="d-block w-100" alt="..."> -->
                         <img src="./imagens/cirurgia1.jpg" class="img-galery">
                         <img src="./imagens/cirurgia2.jpg" class="img-galery">
                         <img src="./imagens/cirurgia3.jpg" class="img-galery">
                     </div>
                     <div class="carousel-item">
-                        <h3>Centro de Vacinação</h3>   
+                        <h3>Centro de Vacinação</h3>
                         <!-- <img src="..." class="d-block w-100" alt="..."> -->
                         <img src="./imagens/vacina1.jpg" class="img-galery">
                         <img src="./imagens/vacina2.jpg" class="img-galery">
-                        <img src="./imagens/vacina3.jpg" class="img-galery">  
+                        <img src="./imagens/vacina3.jpg" class="img-galery">
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselGaleria" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselGaleria"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselGaleria" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselGaleria"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
                 </button>
-            </div>            
+            </div>
         </main>
-    
+
         <!--Rodapé-->
         <footer>
             <p>© Copyright 2021. Todos os direitos reservados</p>
         </footer>
-    
+
     </div>
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
+
 </html>

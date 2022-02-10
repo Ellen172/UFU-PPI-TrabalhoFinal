@@ -1,113 +1,81 @@
 <!DOCTYPE html>
-<html lang = "pt-BR">
+<html lang="pt-BR">
 
-    <head>
-       <meta charset = "UTF-8">
-       <meta name="description" content="Cadastro de Endereço">
-       <title>Cadastro de Endereço</title> 
-    </head> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Cadastro de Endereço">
+    <script src="./js/script_bootstrap.js"></script>
+    <script src="./js/script_estados.js"></script>
+    <link rel="stylesheet" href="./css/style_form.css">
+    <title>Cadastro de Endereço</title>
+</head>
 
-    <body>
-        <!-- Cabeçalho principal, presente em todas as páginas-->
-        <header>
-            <h1>Clínica Aquae Vitae</h1>
-            <img src="imagens/logotype.png" width="200" height="200" alt="logotipo da Clínica Aquae Vitae"> 
-        </header>
+<body>
+    <!-- Cabeçalho principal, presente em todas as páginas-->
+    <header>
+        <h1>Clínica Aquae Vitae</h1>
+        <img src="imagens/logotype.png" width="200" height="200" alt="logotipo da Clínica Aquae Vitae">
+    </header>
 
-        <!--Menu de naveção, com links para todas as páginas-->
-        <nav>
-            <ul>
-                <li><a href = "./index.html">Home</a></li>
-                <li><a href = "./galeria.html">Galeria</a></li>
-                <li><a href = "./cad_endereco.html">Novo Endereço</a></li>
-                <li><a href = "./login.html">Login</a></li>
-                <li><a href = "./agendamento.html">Agendamento</a></li>
-                <!-- restrito-->
-                <li><a href = "./cad_funcionario.html">Novo Funcionario</a></li> 
-                <li><a href = "./cad_paciente.html">Novo Paciente</a></li> 
-                <li><a href = "">Listar Funcionarios</a></li> 
-                <li><a href = "">Listar Pacientes</a></li> 
-                <li><a href = "">Listar Endereços</a></li> 
-                <li><a href = "">Agendamentos e Consultas dos Clientes</a></li> 
-                <li><a href = "">Meus Agendamentos e Consultas</a></li> <!--para medicos--> 
-            </ul>
-        </nav>
+    <!--Menu de naveção, com links para todas as páginas-->
+    <nav class="navbar navbar-light">
+        <ul class="nav nav-tabs">
+            <li class="nav-item"><a class="nav-link" href="./index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="./galeria.html">Galeria</a></li>
+            <li class="nav-item"><a class="nav-link" href="./agendamento.html">Agendamento</a></li>
+            <li class="nav-item"><a class="nav-link active" href="./cad_endereco.html">Novo Endereço</a></li>
+            <li class="nav-item"><a class="nav-link" href="./login.html">Login</a></li>
+        </ul>
+    </nav>
 
-        <main>
-            <h2>Cadastro de Endereço</h2>
+    <main>
+        <h2>Cadastro de Endereço</h2>
 
-            <form action = "cadastro.php" method = "post" enctype="multipart/form-data">
-                <fieldset>
-                    <legend>Dados do Endereço</legend>
-                    <div>
-                        <label for = "cep">CEP:</label>
-                        <input type = "text" id = "cep" name = "cep" pattern="\d{5}-\d{3}.*" placeholder="xxxxx-xxx" required>
-                    </div>
-                    <div>
-                        <label for = "estado">Estado:</label>
-                        <select id="estado" name="estado">
-                            <option value="">Selecione o Estado</option>
-                            <option value="AC">Acre</option>
-                            <option value="AL">Alagoas</option>
-                            <option value="AP">Amapá</option>
-                            <option value="AM">Amazonas</option>
-                            <option value="BA">Bahia</option>
-                            <option value="CE">Ceará</option>
-                            <option value="DF">Distrito Federal</option>
-                            <option value="ES">Espírito Santo</option>
-                            <option value="GO">Goiás</option>
-                            <option value="MA">Maranhão</option>
-                            <option value="MT">Mato Grosso</option>
-                            <option value="MS">Mato Grosso do Sul</option>
-                            <option value="MG">Minas Gerais</option>
-                            <option value="PA">Pará</option>
-                            <option value="PB">Paraíba</option>
-                            <option value="PR">Paraná</option>
-                            <option value="PE">Pernambuco</option>
-                            <option value="PI">Piauí</option>
-                            <option value="RJ">Rio de Janeiro</option>
-                            <option value="RN">Rio Grande do Norte</option>
-                            <option value="RS">Rio Grande do Sul</option>
-                            <option value="RO">Rondônia</option>
-                            <option value="RR">Roraima</option>
-                            <option value="SC">Santa Catarina</option>
-                            <option value="SP">São Paulo</option>
-                            <option value="SE">Sergipe</option>
-                            <option value="TO">Tocantins</option>
-                        </select>
-                        <!-- <input type = "text" id = "estado" name = "estado" pattern = "{A-Za-z}{2}" required> -->
-                    </div>
-                    <div>
-                        <label for = "cidade">Cidade:</label>
-                        <input type = "text" id = "cidade" name = "cidade" required>
-                    </div>
-                    <div>
-                        <label for = "tipologradouro">Tipo de Logradouro:</label>
-                        <select id = "tipologradouro" name = "tipologradouro" required>
-                            <option value="">Escolha</option>
-                            <option value = "rua"> Rua
-                            <option value = "avenida"> Avenida
-                            <option value = "praça"> Praça
-                        </select>
-                    </div>
-                    <div>
-                        <label for="logradouro">Logradouro: </label>
-                        <input type="text" id="logradouro" name="logradouro" required>
-                    </div>
-                    <div>
-                        <label for="numero">Numero: </label>
-                        <input type="number" id="numero" name="numero"> 
-                    </div>
-                </fieldset>
-            </form>
-        </main>
-       
-        <!--Rodapé-->
-        <footer>
-            <p>© Copyright 2021. Todos os direitos reservados</p>
-        </footer>
+        <form action="cadastro.php" method="post" enctype="multipart/form-data">
+            <fieldset>
+                <legend>Dados do Endereço</legend>
+                <div>
+                    <label for="cep">CEP:</label>
+                    <input type="text" id="cep" name="cep" pattern="\d{5}-\d{3}.*" placeholder="xxxxx-xxx" required>
+                </div>
+                <div>
+                    <label for="estado">Estado:</label>
+                    <select id="estado" name="estado">
+                        <option value="">Selecione o Estado</option>
+                    </select>
+                    <!-- <input type = "text" id = "estado" name = "estado" pattern = "{A-Za-z}{2}" required> -->
+                </div>
+                <div>
+                    <label for="cidade">Cidade:</label>
+                    <input type="text" id="cidade" name="cidade" required>
+                </div>
+                <div>
+                    <label for="tipologradouro">Tipo de Logradouro:</label>
+                    <select id="tipologradouro" name="tipologradouro" required>
+                        <option value="">Escolha</option>
+                        <option value="rua"> Rua
+                        <option value="avenida"> Avenida
+                        <option value="praça"> Praça
+                    </select>
+                </div>
+                <div>
+                    <label for="logradouro">Logradouro: </label>
+                    <input type="text" id="logradouro" name="logradouro" required>
+                </div>
+                <div>
+                    <label for="numero">Numero: </label>
+                    <input type="number" id="numero" name="numero">
+                </div>
+            </fieldset>
+        </form>
+    </main>
 
-    </body>
+    <!--Rodapé-->
+    <footer>
+        <p>© Copyright 2021. Todos os direitos reservados</p>
+    </footer>
+
+</body>
 
 
 </html>

@@ -1,61 +1,44 @@
 <!DOCTYPE html>
-<html lang = "pt-BR">
+<html lang="pt-BR">
 
-    <head>
-       <meta charset = "UTF-8">
-       <meta name="description" content="Login">
-       <title>Login</title> 
-    </head> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Login">
+    <script src="./js/script_bootstrap.js"></script>
+    <link rel="stylesheet" href="./css/style_login.css">
+    <title>Login</title>
+</head>
 
-    <body>
-        <!-- Cabeçalho principal, presente em todas as páginas-->
-        <header>
-            <h1>Clínica Aquae Vitae</h1>
-            <img src="imagens/logotype.png" width="200" height="200" alt="logotipo da Clínica Aquae Vitae"> 
-        </header>
-
-        <!--Menu de naveção, com links para todas as páginas-->
-        <nav>
-            <ul>
-                <li><a href = "./index.html">Home</a></li>
-                <li><a href = "./galeria.html">Galeria</a></li>
-                <li><a href = "./cad_endereco.html">Novo Endereço</a></li>
-                <li><a href = "./login.html">Login</a></li>
-                <li><a href = "./agendamento.html">Agendamento</a></li>
-                <!-- restrito-->
-                <li><a href = "./cad_funcionario.html">Novo Funcionario</a></li> 
-                <li><a href = "./cad_paciente.html">Novo Paciente</a></li> 
-                <li><a href = "">Listar Funcionarios</a></li> 
-                <li><a href = "">Listar Pacientes</a></li> 
-                <li><a href = "">Listar Endereços</a></li> 
-                <li><a href = "">Agendamentos e Consultas dos Clientes</a></li> 
-                <li><a href = "">Meus Agendamentos e Consultas</a></li> <!--para medicos--> 
-            </ul>
-        </nav>
-
+<body>
+    <div class="container">
         <main>
+            <h2>Login</h2>
             <form>
-                <fieldset>
-                    <legend>Login</legend>
-                    <div>
-                        <label for = "email">Usuário:</label>
-                        <input type = "email" id = "email" name = "email" required>
-                    </div>
-                    <div>
-                        <label for = "senha">Senha:</label>
-                        <input type = "text" id = "senha" name = "senha" required>
-                    </div>
-                    <button>Entrar</button>
-                </fieldset>
-            </form>
-        </main>
-       
-        <!--Rodapé-->
-        <footer>
-            <p>© Copyright 2021. Todos os direitos reservados</p>
-        </footer>
+                <!-- Email -->
+                <div class="col form-floating mb-3">
+                    <input type="email" id="email" name="email" class="form-control" placeholder="E-mail" required>
+                    <label for="email">E-mail</label>
+                </div>
 
-    </body>
+                <!-- Senha -->
+                <div class="col form-floating mb-3">
+                    <input type="password" id="senha" name="senha" class="form-control" placeholder="Senha" required>
+                    <label for="senha">Senha</label>
+                </div>
+            </form>
+
+            <!-- Botões -->
+            <div>
+                <!-- Entrar -->
+                <a class="btn btn-primary" href="./restrito/cad_funcionario.html" role="button">Entrar</a>
+
+                <!-- Voltar -->
+                <a class="btn btn-danger" href="index.html" role="button">Cancelar</a>
+            </div>
+        </main>
+    </div>
+
+</body>
 
 
 </html>
