@@ -26,3 +26,11 @@ footer {
     text-align: center;
     margin-top: 20px;
 }
+p {
+    text-align: justify;
+    text-indent: 0.7rem;
+}
+blockquote {
+    font-style: italic;
+    text-indent: 0.7rem;
+}
