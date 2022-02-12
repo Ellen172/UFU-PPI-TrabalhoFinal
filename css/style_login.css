@@ -22,7 +22,7 @@ main {
     padding-top: 2rem;
     width: 60%;
     border: 0.5px solid lightgray;
-    border-radius: 5px;
+    border-radius: 1rem;
     background-color: #fff;
     position: absolute;
     top: 50%;

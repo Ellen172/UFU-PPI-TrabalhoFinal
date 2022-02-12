@@ -10,7 +10,7 @@
     <title>Cadastro de Funcionário</title>
 
     <style>
-        .infMedico {
+        #infMedico {
             display: none;
         }
     </style>
@@ -32,7 +32,7 @@
             <li class="nav-item"><a class="nav-link" href="lista_paciente.html">Listar Pacientes</a></li>
             <li class="nav-item"><a class="nav-link" href="lista_endereco.html">Listar Endereços</a></li>
             <li class="nav-item"><a class="nav-link" href="lista_agendamento.html">Agendamentos e Consultas dos
-                    Clientes</a></li>
+                    Clientes</a></li>lass="infMedico
             <li class="nav-item"><a class="nav-link" href="lista_consultas.html">Meus Agendamentos e Consultas</a>
             </li>
             <li class="nav-item"><a class="nav-link" href="../index.html">Sair</a></li>
@@ -78,8 +78,8 @@
                         <input class="form-control" type="text" id="cep" name="cep" pattern="\d{5}-\d{3}.*" placeholder="xxxxx-xxx" required>
                     </div>
                     <div>
-                        <label class="form-label" for="estado">Estado:</label>
-                        <select class="form-select" id="estado" name="estado">
+                        <label for="estado" class="form-label">Estado:</label>
+                        <select id="estado" name="estado" class="form-select">
                             <option value="">Selecione o Estado</option>
                         </select>
                         <!-- <input type = "text" id = "estado" name = "estado" pattern = "{A-Za-z}{2}" required> -->
@@ -126,7 +126,7 @@
                         <input class="form-control" type="password" id="senha" name="senha" placeholder="informe uma senha" required>
                     </div>
                 </fieldset>
-                <fieldset class="infMedico">
+                <fieldset id="infMedico">
                     <legend>Informações Médico</legend>
                     <div>
                         <label class="form-label" for="CRM">CRM: </label>
@@ -143,16 +143,13 @@
             </form>
 
             <script>
-                window.onload = () => {
-                    const checkboxMedico = document.getElementById("medico");
-                    const fieldsetInfMedico = document.querySelector(".infMedico");
+                const checkboxMedico = document.getElementById("medico");
+                const fieldsetInfMedico = document.querySelector("#infMedico");
 
-                    checkboxMedico.onclick = () => {
-                        if(fieldsetInfMedico.style.display == 'block') fieldsetInfMedico.style.display = 'none';
-                        else fieldsetInfMedico.style.display = 'block';
-                    }
+                checkboxMedico.onclick = () => {
+                    if (fieldsetInfMedico.style.display == 'block') fieldsetInfMedico.style.display = 'none';
+                    else fieldsetInfMedico.style.display = 'block';
                 }
-
             </script>
         </main>
     </div>
