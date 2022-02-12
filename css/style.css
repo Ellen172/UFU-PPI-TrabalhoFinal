@@ -1,19 +1,33 @@
+body {
+    background-image: url("../imagens/ocean.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
 header {
-    width: 100%;
     text-align: center;
+    background-color: white;
+    margin: 1rem;
+    border-radius: 1rem;
+    opacity: 0.9;
 }
 header h1 {
     display: inline-block;
     margin: 30px;
-}
-.logo {
-    width: 120px;
-    float: right;
-    margin: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
 }
 .navbar {
     width: 100%;
     display: block;
+}
+main {
+    background-color: antiquewhite;
+    border: 0.5px solid lightgray;
+    border-radius: 1rem;
+    opacity: 0.9;
+    padding: 20px 30px;
 }
 .img-galery {
     width: 30%;
