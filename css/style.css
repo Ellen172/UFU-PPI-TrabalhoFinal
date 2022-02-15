@@ -47,9 +47,8 @@ nav > a:hover {
 
 main {
     margin-top: 25px;
-    background-color: #085983;
+    background-color: rgba(8, 89, 129, 0.8);
     border-radius: 15px;
-    opacity: 0.8;
     padding: 20px 30px;
     color: azure;
 }
