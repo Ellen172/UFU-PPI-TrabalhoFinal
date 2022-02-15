@@ -21,6 +21,7 @@ header h1 {
 .navbar {
     width: 100%;
     display: block;
+    background-image: linear-gradient(to right, #085983, #2da2b0, #085983);
 }
 main {
     background-color: antiquewhite;
