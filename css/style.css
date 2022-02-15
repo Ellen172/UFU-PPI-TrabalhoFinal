@@ -9,13 +9,18 @@ body {
 header {
     color: azure;
     text-align: center;
-    background-color: #085983;
-    opacity: 0.8;
+    background-color: rgba(8, 89, 131, 0.8);
 }
 header h1 {
     display: inline-block;
-    margin: 30px;
+    margin: 0 3px;
     font-weight: bold;
+    vertical-align: middle
+}
+header img {
+    width: 12rem;
+    height: 12rem;
+    margin: 10px 0;
 }
 
 #currently-active-tab {
@@ -29,8 +34,7 @@ nav {
     padding: 15px;
     text-align: center;
     margin-top: 5px;
-    background-color: #085983;
-    opacity: 0.8;
+    background-color: rgba(8, 89, 131, 0.8);
 }
 
 nav > a {
@@ -43,6 +47,7 @@ nav > a:hover {
     color: azure;
     border: 0.1px solid azure;
     border-radius: 5px;
+    padding: 14px;
 }
 
 main {
