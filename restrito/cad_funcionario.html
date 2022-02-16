@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Página Home">
-    <script src="../js/script_bootstrap.js"></script>
-    <script src="../js/script_estados.js"></script>
+    <script src="../js/script.js"></script>
     <link rel="stylesheet" href="../css/style.css">
     <title>Cadastro de Funcionário</title>
 
@@ -56,13 +55,13 @@
                             </select>
                         </div>
                         <div class="col-md-4">
-                            <label class="form-label "for="email">Email: </label>
+                            <label class="form-label " for="email">Email: </label>
                             <input class="form-control" type="email" id="email" name="email" required>
                         </div>
                         <div class="col-md-2">
                             <label class="form-label" for="telefone">Telefone: </label>
-                            <input class="form-control" type="tel" id="telefone" name="telefone" pattern="\(d{2})\d{5}-\d{4}"
-                                   placeholder="(xx)xxxxx-xxxx" required>
+                            <input class="form-control" type="tel" id="telefone" name="telefone"
+                                pattern="\(d{2})\d{5}-\d{4}" placeholder="(xx)xxxxx-xxxx" required>
                         </div>
                     </div>
                 </fieldset>
@@ -71,7 +70,8 @@
                     <div class="row m-4">
                         <div class="col-md-2">
                             <label class="form-label" for="cep">CEP:</label>
-                            <input class="form-control" type="text" id="cep" name="cep" pattern="\d{5}-\d{3}.*" placeholder="xxxxx-xxx" required>
+                            <input class="form-control" type="text" id="cep" name="cep" pattern="\d{5}-\d{3}.*"
+                                placeholder="xxxxx-xxx" required>
                         </div>
                         <div class="col-md-2">
                             <label for="estado" class="form-label">Estado:</label>
@@ -107,21 +107,25 @@
                     <legend>Informações Clínicas</legend>
                     <div class="row m-4">
                         <div class="col-md-4">
-                            <label class="form-label" for="dataInicioContrato">Data do início do contrato de trabalho: </label>
-                            <input class="form-control" type="date" id="dataInicioContrato" name="dataInicioContrato" placeholder="informe a data"
-                                   required>
+                            <label class="form-label" for="dataInicioContrato">Data do início do contrato de trabalho:
+                            </label>
+                            <input class="form-control" type="date" id="dataInicioContrato" name="dataInicioContrato"
+                                placeholder="informe a data" required>
                         </div>
                         <div class="col-md-4">
                             <label class="form-label" for="salario">Salário: </label>
-                            <input class="form-control" type="number" id="salario" name="salario" placeholder="valor em reais" required>
+                            <input class="form-control" type="number" id="salario" name="salario"
+                                placeholder="valor em reais" required>
                         </div>
                         <div class="col-md-3">
                             <label class="form-label" for="senha">Senha: </label>
-                            <input class="form-control" type="password" id="senha" name="senha" placeholder="informe uma senha" required>
+                            <input class="form-control" type="password" id="senha" name="senha"
+                                placeholder="informe uma senha" required>
                         </div>
                         <div class="col-md-1">
                             <label class="form-label" for="medico">Médico?</label>
-                            <input class="form-check" type="checkbox" id="medico" name="medico" placeholder="é médico?" required>
+                            <input class="form-check" type="checkbox" id="medico" name="medico" placeholder="é médico?"
+                                required>
                         </div>
                     </div>
                 </fieldset>
@@ -130,12 +134,13 @@
                     <div class="row m-4">
                         <div class="col-md-6">
                             <label class="form-label" for="CRM">CRM: </label>
-                            <input class="form-control" type="number" id="CRM" name="CRM" placeholder="digite o CRM" required>
+                            <input class="form-control" type="number" id="CRM" name="CRM" placeholder="digite o CRM"
+                                required>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="especialidade">Especialidade: </label>
-                            <input class="form-control" type="text" id="especialidade" name="especialidade" placeholder="informe a especialidade"
-                                   required>
+                            <input class="form-control" type="text" id="especialidade" name="especialidade"
+                                placeholder="informe a especialidade" required>
                         </div>
                     </div>
                 </fieldset>

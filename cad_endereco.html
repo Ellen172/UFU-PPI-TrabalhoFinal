@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Cadastro de Endereço">
-    <script src="./js/script_bootstrap.js"></script>
-    <script src="./js/script_estados.js"></script>
+    <script src="./js/script.js"></script>
     <link rel="stylesheet" href="./css/style.css">
     <title>Cadastro de Endereço</title>
 </head>
@@ -26,46 +25,51 @@
         <a href="./login.html">Login</a>
     </nav>
 
-    <main class="container">
-        <h2>Cadastro de Endereço</h2>
-        <form action="cadastro.php" method="post" enctype="multipart/form-data">
-            <fieldset>
-                <legend>Dados do Endereço</legend>
-                <div>
-                    <label for="cep">CEP:</label>
-                    <input type="text" id="cep" name="cep" pattern="\d{5}-\d{3}.*" placeholder="xxxxx-xxx" required>
-                </div>
-                <div>
-                    <label for="estado">Estado:</label>
-                    <select id="estado" name="estado">
-                        <option value="">Selecione o Estado</option>
-                    </select>
-                    <!-- <input type = "text" id = "estado" name = "estado" pattern = "{A-Za-z}{2}" required> -->
-                </div>
-                <div>
-                    <label for="cidade">Cidade:</label>
-                    <input type="text" id="cidade" name="cidade" required>
-                </div>
-                <div>
-                    <label for="tipologradouro">Tipo de Logradouro:</label>
-                    <select id="tipologradouro" name="tipologradouro" required>
-                        <option value="">Escolha</option>
-                        <option value="rua"> Rua
-                        <option value="avenida"> Avenida
-                        <option value="praça"> Praça
-                    </select>
-                </div>
-                <div>
-                    <label for="logradouro">Logradouro: </label>
-                    <input type="text" id="logradouro" name="logradouro" required>
-                </div>
-                <div>
-                    <label for="numero">Numero: </label>
-                    <input type="number" id="numero" name="numero">
-                </div>
-            </fieldset>
-        </form>
-    </main>
+    <div class="container">
+        <main>
+            <form action="cadastro.php" method="post" enctype="multipart/form-data">
+                <fieldset class="row g-3">
+                    <legend class="subtitulo">Dados do Endereço</legend>
+
+                    <!--CEP, Cidade e Estado-->
+                    <div class="col-md-4">
+                        <label for="cep" class="form-label">CEP:</label>
+                        <input type="text" id="cep" name="cep" pattern="\d{5}-\d{3}.*" placeholder="xxxxx-xxx"
+                            class="form-control" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="cidade" class="form-label">Cidade:</label>
+                        <input type="text" id="cidade" name="cidade" class="form-control" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="estado">Estado:</label>
+                        <select id="estado" name="estado" class="form-select">
+                            <option value="">Selecione o Estado</option>
+                        </select>
+                    </div>
+
+                    <!--Tipo de Logradouro, Logradouro e Número-->
+                    <div class="col-md-4">
+                        <label for="tipologradouro">Tipo de Logradouro:</label>
+                        <select id="tipologradouro" name="tipologradouro" class="form-select" required>
+                            <option value="">Escolha</option>
+                            <option value="rua"> Rua
+                            <option value="avenida"> Avenida
+                            <option value="praça"> Praça
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="logradouro" class="form-label">Logradouro: </label>
+                        <input type="text" id="logradouro" name="logradouro" class="form-control" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="numero" class="form-label">Numero: </label>
+                        <input type="number" id="numero" name="numero" class="form-control">
+                    </div>
+                </fieldset>
+            </form>
+        </main>
+    </div>
 
     <!--Rodapé-->
     <footer>
