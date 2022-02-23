@@ -30,20 +30,28 @@ header img {
     border-radius: 5px;
 }
 
-nav {
+.dropdown{
     padding: 15px;
     text-align: center;
     margin-top: 5px;
     background-color: rgba(8, 89, 131, 0.8);
 }
 
-nav > a {
+.dropdown-menu > a{
     color: azure;
     padding: 15px;
     text-decoration: none;
+    background-color: rgba(8, 89, 131, 0.8);
 }
 
-nav > a:hover {
+.dropdown-menu > a:hover {
+    color: azure;
+    border: 0.1px solid azure;
+    border-radius: 5px;
+    padding: 14px;
+}
+
+.dropdown > a:hover{
     color: azure;
     border: 0.1px solid azure;
     border-radius: 5px;
@@ -81,6 +89,21 @@ blockquote {
     text-indent: 0.7rem;
 }
 
+.tabela_head{
+    color: #085983;
+    background-color: azure;
+    border-left: black;
+}
 
+tr th{
+    width: 5%;
+    height: 5px;
+    padding: 20px;
+    border: 1px solid;
 
+    text-align: center;
+}
 
+#infMedico {
+    display: none;
+}

@@ -1,9 +1,35 @@
+let estados = [
+    "AC", "AL", "AP", "AM",
+    "BA",
+    "CE",
+    "DF",
+    "ES",
+    "GO",
+    "MA", "MT", "MS", "MG",
+    "PA", "PB", "PR", "PE", "PI",
+    "RJ", "RN", "RS", "RO", "RR",
+    "SC", "SP", "SE",
+    "TO"
+];
 
 window.addEventListener("DOMContentLoaded", iniciaPagina);
 
 function iniciaPagina() {
     /*Chama função para adicionar Bootstrap*/
     adicionaBootstrap();
+
+    /*Define quando a função adicionaEstados é executada*/
+    const campoEstado = document.querySelector("#estado");
+    campoEstado.addEventListener("click", adicionaEstados());
+
+    /*Define quando as informações do médico serão preenchidas*/
+    const checkboxMedico = document.getElementById("medico");
+    const fieldsetInfMedico = document.querySelector("#infMedico");
+
+    checkboxMedico.onclick = () => {
+        if (fieldsetInfMedico.style.display == 'block') fieldsetInfMedico.style.display = 'none';
+        else fieldsetInfMedico.style.display = 'block';
+    }
 }
 
 /* Adiciona Bootstrap*/
@@ -39,3 +65,22 @@ function adicionaBootstrap() {
     campoHead.appendChild(css);
     campoHead.appendChild(js);
 }
+
+/*Função para adicionar estados*/
+function adicionaEstados() {
+
+    //Selecionamos o campo repertótio pelo id
+    const campoEstado = document.querySelector("#estado");
+
+    for (let i = 0; i < estados.length; i++) {
+        //Criamos opções
+        const novoOpt = document.createElement("option");
+
+        //Acionamos o conteúdo do campo com o textcontet do array estados
+        novoOpt.textContent = estados[i];
+
+        //Opções é filho do campo estado
+        campoEstado.appendChild(novoOpt);
+    }
+}
+
