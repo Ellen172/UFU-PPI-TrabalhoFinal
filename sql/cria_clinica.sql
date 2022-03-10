@@ -42,6 +42,18 @@ create table paciente
     tipoSanguineo char(3)
 )ENGINE=InnoDB;
 
+--ENDERECO
+create table endereco
+(
+    /* CHAVE PRIMARIA */
+    id_endereco serial, 
+    /* ATRIBUTOS */
+    cep char(10) not null,
+    logradouro varchar(100),
+    cidade varchar(50) not null,
+    estado char(2) not null
+)ENGINE=InnoDB;
+
 
 
 
@@ -58,3 +70,6 @@ alter table funcionario
 alter table paciente
     add constraint paciente_pk primary key (id_paciente),
     add constraint paciente_fk foreign key (id_paciente) references pessoa(id_pessoa);
+
+alter table endereco
+    add constraint endereco_pk primary key (id_endereco);
