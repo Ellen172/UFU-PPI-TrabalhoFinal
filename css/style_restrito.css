@@ -11,21 +11,30 @@
 }
 
 .dropdown-menu > a{
-    background-color: rgba(8, 89, 131, 0.8);
-    color: azure;
+    background-color: azure;
+    color: rgba(8, 89, 131, 0.8);
     padding: 8px;
 }
 
 .dropdown-menu > a:hover{
-    color: azure;
-    background-color: rgba(8, 89, 131, 0.8);
-    padding: 7.9px;
+    color: rgba(8, 89, 131, 0.8);
+    background-color: azure;
+    border: rgba(8, 89, 131, 0.8) solid 0.1px;
+    border-radius: 5px;
+    padding: 7px;
 }
 
 .dropdown button:hover, a:hover{
     border: azure solid 0.1px;
     border-radius: 5px;
     color: azure;
+}
+
+#currently-active-tab {
+    pointer-events: none;
+    background-color: rgba(8, 89, 131, 0.8);
+    color: azure;
+    border-radius: 5px;
 }
 
 .tabela_head{
