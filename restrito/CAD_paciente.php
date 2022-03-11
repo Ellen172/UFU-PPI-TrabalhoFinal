@@ -42,7 +42,7 @@ try {
         $idPessoa, $peso, $altura, $tipoSaguineo
     ]);
 
-    header("location: cad_endereco.html");
+    header("location: cad_paciente.html");
     exit(); 
 }
 catch(Exception $e){
@@ -56,5 +56,5 @@ catch(Exception $e){
 ?>
 
 <script>
-    <alert>Dados inseridos com sucesso</alert>
+    <alert>Dados inseridos com sucesso!</alert>
 </script>
