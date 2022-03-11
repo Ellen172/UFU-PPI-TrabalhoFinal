@@ -42,6 +42,16 @@ create table paciente
     tipoSanguineo char(3)
 )ENGINE=InnoDB;
 
+--MEDICO
+create table medico
+(
+    /* CHAVE PRIMARIA */
+    id_medico int not null, 
+    /* ATRIBUTOS */
+    especialidade varchar(100) not null,
+    crm varchar(50)
+)ENGINE=InnoDB;
+
 --ENDERECO
 create table endereco
 (
@@ -54,11 +64,20 @@ create table endereco
     estado char(2) not null
 )ENGINE=InnoDB;
 
-
-
-
-
-
+--AGENDA
+create table agenda
+(
+    /* CHAVE PRIMARIA */
+    id_agenda serial, 
+    /* CHAVE ESTRANGEIRA */
+    id_medico int not null,
+    /* ATRIBUTOS */
+    data date not null,
+    horario time not null,
+    nome varchar(100) not null,
+    sexo char not null check (sexo in ('M', 'F', 'O')),
+    email varchar(50),
+)ENGINE=InnoDB;
 
 alter table pessoa
    add constraint pessoa_pk primary key (id_pessoa);
@@ -71,5 +90,13 @@ alter table paciente
     add constraint paciente_pk primary key (id_paciente),
     add constraint paciente_fk foreign key (id_paciente) references pessoa(id_pessoa);
 
+alter table medico
+    add constraint medico_pk primary key (id_medico),
+    add constraint medico_fk foreign key (id_funcionario) references funcionario(id_funcionario);
+
 alter table endereco
     add constraint endereco_pk primary key (id_endereco);
+
+alter table agenda
+    add constraint agenda_pk primary key (id_agenda),
+    add constraint medico_fk foreign key(id_medico) references medico(id_medico);
