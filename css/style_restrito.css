@@ -1,93 +1,31 @@
-body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-image: url("../imagens/background_general.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    margin: 0;
-    padding: 0;
-}
-header {
-    color: azure;
-    text-align: center;
-    background-color: rgba(8, 89, 131, 0.8);
-}
-header h1 {
-    display: inline-block;
-    margin: 0 3px;
-    font-weight: bold;
-    vertical-align: middle
-}
-header img {
-    width: 12rem;
-    height: 12rem;
-    margin: 10px 0;
-}
-
-#currently-active-tab {
-    pointer-events: none;
-    background-color: azure;
-    color: #085983;
-    border-radius: 5px;
+.btnNav{
+    padding: 11px !important;
+    color: azure !important;
 }
 
 .dropdown{
-    padding: 15px;
+    padding: 3px;
     text-align: center;
     margin-top: 5px;
     background-color: rgba(8, 89, 131, 0.8);
 }
 
 .dropdown-menu > a{
-    color: azure;
-    padding: 15px;
-    text-decoration: none;
     background-color: rgba(8, 89, 131, 0.8);
+    color: azure;
+    padding: 8px;
 }
 
-.dropdown-menu > a:hover {
+.dropdown-menu > a:hover{
     color: azure;
-    border: 0.1px solid azure;
+    background-color: rgba(8, 89, 131, 0.8);
+    padding: 7.9px;
+}
+
+.dropdown button:hover, a:hover{
+    border: azure solid 0.1px;
     border-radius: 5px;
-    padding: 14px;
-}
-
-.dropdown > a:hover{
     color: azure;
-    border: 0.1px solid azure;
-    border-radius: 5px;
-    padding: 14px;
-}
-
-main {
-    margin-top: 25px;
-    background-color: rgba(8, 89, 129, 0.8);
-    border-radius: 15px;
-    padding: 20px 30px;
-    color: azure;
-}
-.img-galery {
-    width: 30%;
-    margin: 8px;
-}
-.img-galery:hover {
-    transform: scale(1.3);
-}
-footer {
-    padding: 1rem   ;
-    background-color: #085983;
-    text-align: center;
-    margin-top: 20px;
-    color: azure;
-    opacity: 0.8;
-}
-p {
-    text-align: justify;
-    text-indent: 0.7rem;
-}
-blockquote {
-    font-style: italic;
-    text-indent: 0.7rem;
 }
 
 .tabela_head{
