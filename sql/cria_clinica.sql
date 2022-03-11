@@ -11,7 +11,7 @@ create table pessoa
     id_pessoa serial, 
     /* ATRIBUTOS */
     nome varchar(100) not null,
-    sexo char not null check (sexo in ('M', 'F', 'O')),
+    sexo char not null,
     email varchar(50),
     telefone varchar(20),
     cep char(10) not null,
@@ -24,7 +24,7 @@ create table pessoa
 create table funcionario
 (
     /* CHAVE PRIMARIA */
-    id_funcionario int not null, 
+    id_funcionario int, 
     /* ATRIBUTOS */
     data_contrato date not null,
     salario decimal not null,
@@ -35,7 +35,7 @@ create table funcionario
 create table paciente
 (
     /* CHAVE PRIMARIA */
-    id_paciente int not null, 
+    id_paciente int, 
     /* ATRIBUTOS */
     peso decimal not null,
     altura decimal not null,
@@ -46,7 +46,7 @@ create table paciente
 create table medico
 (
     /* CHAVE PRIMARIA */
-    id_medico int not null, 
+    id_medico int, 
     /* ATRIBUTOS */
     especialidade varchar(100) not null,
     crm varchar(50)
@@ -72,11 +72,11 @@ create table agenda
     /* CHAVE ESTRANGEIRA */
     id_medico int not null,
     /* ATRIBUTOS */
-    data date not null,
+    dia date not null,
     horario time not null,
     nome varchar(100) not null,
-    sexo char not null check (sexo in ('M', 'F', 'O')),
-    email varchar(50),
+    sexo char not null,
+    email varchar(50)
 )ENGINE=InnoDB;
 
 alter table pessoa
