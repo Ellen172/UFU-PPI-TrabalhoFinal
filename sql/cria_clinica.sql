@@ -92,7 +92,7 @@ alter table paciente
 
 alter table medico
     add constraint medico_pk primary key (id_medico),
-    add constraint medico_fk foreign key (id_funcionario) references funcionario(id_funcionario);
+    add constraint medico_fk foreign key (id_medico) references funcionario(id_funcionario);
 
 alter table endereco
     add constraint endereco_pk primary key (id_endereco);
