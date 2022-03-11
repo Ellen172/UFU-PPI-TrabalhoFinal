@@ -17,19 +17,22 @@ create table pessoa
     cep char(10) not null,
     logradouro varchar(100),
     cidade varchar(50) not null,
-    estado char(2) not null
-)ENGINE=InnoDB;
+    estado char(2) not null,
+    primary key (id_pessoa)
+);
 
 --FUNCIONARIO
 create table funcionario
 (
     /* CHAVE PRIMARIA */
-    id_funcionario int, 
+    id_funcionario int not null, 
     /* ATRIBUTOS */
     data_contrato date not null,
     salario decimal not null,
-    senhaHash varchar(100)
-)ENGINE=InnoDB;
+    senhaHash varchar(100),
+    foreign key (id_funcionario) references pessoa(id_pessoa),
+    primary key (id_funcionario)
+);
 
 --PACIENTE
 create table paciente
@@ -39,8 +42,10 @@ create table paciente
     /* ATRIBUTOS */
     peso decimal not null,
     altura decimal not null,
-    tipoSanguineo char(3)
-)ENGINE=InnoDB;
+    tipoSanguineo char(3),
+    primary key (id_paciente),
+    foreign key (id_paciente) references pessoa(id_pessoa)
+);
 
 --MEDICO
 create table medico
@@ -49,8 +54,10 @@ create table medico
     id_medico int, 
     /* ATRIBUTOS */
     especialidade varchar(100) not null,
-    crm varchar(50)
-)ENGINE=InnoDB;
+    crm varchar(50),
+    primary key (id_medico),
+    foreign key (id_medico) references funcionario(id_funcionario)
+);
 
 --ENDERECO
 create table endereco
@@ -61,8 +68,9 @@ create table endereco
     cep char(10) not null,
     logradouro varchar(100),
     cidade varchar(50) not null,
-    estado char(2) not null
-)ENGINE=InnoDB;
+    estado char(2) not null,
+    primary key (id_endereco)
+);
 
 --AGENDA
 create table agenda
@@ -76,27 +84,8 @@ create table agenda
     horario time not null,
     nome varchar(100) not null,
     sexo char not null,
-    email varchar(50)
-)ENGINE=InnoDB;
+    email varchar(50),
+    primary key (id_agenda),
+    foreign key(id_medico) references medico(id_medico)
+);
 
-alter table pessoa
-   add constraint pessoa_pk primary key (id_pessoa);
-
-alter table funcionario
-   add constraint funcionario_pk primary key (id_funcionario),
-   add constraint funcionario_fk foreign key (id_funcionario) references pessoa(id_pessoa);
-
-alter table paciente
-    add constraint paciente_pk primary key (id_paciente),
-    add constraint paciente_fk foreign key (id_paciente) references pessoa(id_pessoa);
-
-alter table medico
-    add constraint medico_pk primary key (id_medico),
-    add constraint medico_fk foreign key (id_medico) references funcionario(id_funcionario);
-
-alter table endereco
-    add constraint endereco_pk primary key (id_endereco);
-
-alter table agenda
-    add constraint agenda_pk primary key (id_agenda),
-    add constraint medico_fk foreign key(id_medico) references medico(id_medico);
