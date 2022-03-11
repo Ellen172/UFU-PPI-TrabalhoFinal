@@ -23,12 +23,21 @@ function iniciaPagina() {
     campoEstado.addEventListener("click", adicionaEstados());
 
     /*Define quando as informações do médico serão preenchidas*/
-    const checkboxMedico = document.getElementById("medico");
+    const radioMedico = document.getElementById("medico");
+    const radioOutro = document.getElementById("outro");
     const fieldsetInfMedico = document.querySelector("#infMedico");
 
-    checkboxMedico.onclick = () => {
-        if (fieldsetInfMedico.style.display == 'block') fieldsetInfMedico.style.display = 'none';
-        else fieldsetInfMedico.style.display = 'block';
+    // if(radioMedico.checked == true){
+    //     fieldsetInfMedico.style.display = 'block';
+    // } else {
+    //     fieldsetInfMedico.style.display = 'none';
+    // }
+
+    radioMedico.onclick = () => {
+        fieldsetInfMedico.style.display = 'block';
+    } 
+    radioOutro.onclick = () => {
+        fieldsetInfMedico.style.display = 'none';
     }
 }
 
