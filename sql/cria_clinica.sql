@@ -32,7 +32,6 @@ create table funcionario
     senhaHash varchar(100),
     foreign key (id_funcionario) references pessoa(id_pessoa),
     primary key (id_funcionario)
-    on delete cascade
 );
 
 --PACIENTE
@@ -46,7 +45,6 @@ create table paciente
     tipoSanguineo char(3),
     primary key (id_paciente),
     foreign key (id_paciente) references pessoa(id_pessoa)
-    on delete cascade,
 );
 
 --MEDICO
@@ -59,7 +57,6 @@ create table medico
     crm varchar(50),
     primary key (id_medico),
     foreign key (id_medico) references funcionario(id_funcionario)
-    on delete cascade
 );
 
 --ENDERECO
