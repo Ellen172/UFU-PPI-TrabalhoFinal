@@ -26,7 +26,6 @@ catch(Exception $e){
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Página Listagem de Agendamentos">
-    <script src="../js/script.js"></script>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/style_restrito.css">
     <title>Lista de Endereços</title>
@@ -46,7 +45,7 @@ catch(Exception $e){
             Cadastrar
         </button>
         <div class="dropdown-menu">
-            <a class="dropdown-item" id="currently-active-tab" href="cad_funcionario.html">Novo Funcionario</a>
+            <a class="dropdown-item" href="cad_funcionario.html">Novo Funcionario</a>
             <a class="dropdown-item" href="cad_paciente.html">Novo Paciente</a>
         </div>
 
@@ -56,7 +55,7 @@ catch(Exception $e){
         </button>
         <div class="dropdown-menu">
             <a class="dropdown-item" href="LIST_funcionario.php">Listar Funcionarios</a>
-            <a class="dropdown-item" href="lista_paciente.html">Listar Pacientes</a>
+            <a class="dropdown-item" href="LIST_paciente.php">Listar Pacientes</a>
             <a class="dropdown-item" href="LIST_endereco.php">Listar Endereços</a>
             <a class="dropdown-item" href="lista_agendamento.html">Agendamentos e Consultas dos Clientes</a>
             <a class="dropdown-item" href="lista_consultas.html">Meus Agendamentos e Consultas</a>
@@ -111,6 +110,16 @@ catch(Exception $e){
     <footer>
         © Copyright 2021. Todos os direitos reservados.
     </footer>
+
+    <script src="../js/bootstrap.js"></script>
+    <script>
+        window.addEventListener("DOMContentLoaded", iniciaPagina);
+
+        function iniciaPagina() {
+            /*Chama função para adicionar Bootstrap*/
+            adicionaBootstrap();
+        }
+    </script>
 
 </body>
 

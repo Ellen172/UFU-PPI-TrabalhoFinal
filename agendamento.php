@@ -1,10 +1,27 @@
+<?php
+
+require "conexaoMysql.php";
+$pdo = mysqlConnect();
+
+try {
+    $sql = <<<SQL
+    SELECT especialidade
+    FROM medico
+    SQL;
+
+    $stmt = $pdo->query($sql);
+} 
+catch (Exception $e) {
+    exit('Ocorreu uma falha: ' . $e->getMessage());
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Agendamento de consulta">
-    <script src="./js/script.js"></script>
     <link rel="stylesheet" href="./css/style.css">
     <title>Agendamento</title>
 </head>
@@ -20,34 +37,46 @@
     <nav>
         <a href="./index.html">Home</a>
         <a href="./galeria.html">Galeria</a>
-        <a id="currently-active-tab" href="./agendamento.html">Agendamento</a>
+        <a id="currently-active-tab" href="./agendamento.php">Agendamento</a>
         <a href="./cad_endereco.html">Novo Endereço</a>
         <a href="./login.html">Login</a>
     </nav>
 
     <div class="container">
         <main>
-            <form action="CAD_consulta.php" method="post" enctype="multipart/form-data">
+            <form>
                 <fieldset>
                     <legend>Dados da consulta</legend>
                     <div class="row m-3 g-3">
-                        <div class="col-4">
+                        <div class="col-sm-4">
                             <label for="especialidade" class="form-label">Especialidade: </label>
                             <select id="especialidade" name="especialidade" class="form-select">
                                 <option value="">Selecione..</option>
+                                <?php
+                                    while ($row = $stmt->fetch()) {
+                                        $especialidade = $row['especialidade'];
+
+                                        echo <<<HTML
+                                        <option value="$especialidade">$especialidade</option>
+                                        HTML;
+                                    }
+
+                                ?>
                             </select>
                         </div>
-                        <div class="col-8">
-                            <label for="medico" class="form-label">Nome: </label>
-                            <select id="medico" name="medico" class="form-select">
+                        <div class="col-sm-8">
+                            <label for="nome" class="form-label">Nome: </label>
+                            <select id="nome" name="nome" class="form-select">
                                 <option value="">Selecione..</option>
                             </select>
                         </div>
-                        <div class="col-6">
+                    </div>
+                    <div class="row m-3 g-3">
+                        <div class="col-sm-4">
                             <label for="data" class="form-label">Data: </label>
                             <input type="date" id="data" name="data" class="form-control">
                         </div>
-                        <div class="col-6">
+                        <div class="col-sm-8">
                             <label for="horario" class="form-label">Horário: </label>
                             <select id="horario" name="horario" class="form-select">
                                 <option value="">Selecione..</option>
@@ -58,15 +87,15 @@
                 <fieldset>
                     <legend>Dados do Paciente</legend>
                     <div class="row m-3 g-3">
-                        <div class="col-4">
-                            <label for="paciente" class="form-label">Nome:</label>
-                            <input type="text" id="paciente" name="paciente" class="form-control" required>
+                        <div class="col-sm-4">
+                            <label for="nome" class="form-label">Nome:</label>
+                            <input type="text" id="nome" name="nome" class="form-control" required>
                         </div>
-                        <div class="col-4">
+                        <div class="col-sm-4">
                             <label for="email" class="form-label">E-mail:</label>
                             <input type="email" id="email" name="email" class="form-control" required>
                         </div>
-                        <div class="col-4">
+                        <div class="col-sm-4">
                             <label class="form-label" for="sexo">Sexo: </label>
                             <select class="form-select" name="sexo" id="sexo" required>
                                 <option value="">Selecione..</option>
@@ -93,53 +122,23 @@
         </main>
     </div>
 
-    <script>
-        function buscaMedico(){
-            let form = document.querySelector("form");
-      
-            fetch("CONS_medico.php?" + cep)
-                .then(response => {
-                if (!response.ok) {
-                    // A requisição finalizou com sucesso a nível de rede,
-                    // porém o servidor retornou um código de status
-                    // fora da faixa 200-299 (indicando outros possíveis erros).
-                    // Neste caso, lança uma exceção para que a promise seja
-                    // rejeitada. Como o próximo 'then' não possui callback 
-                    // de erros, será executada a função do próximo 'catch'.
-                    throw new Error(response.status);
-                    // return Promise.reject(response.status);
-                }
-
-                // Requisição finalizada com sucesso e o servidor
-                // retornou um código de status de sucesso (200-299). 
-                // O método json() faz a leitura dos dados de forma 
-                // assíncrona e converte para um objeto JS. Qdo essa 
-                // operação finalizar com sucesso, a função de callback
-                // do próximo then receberá o resultado e será executada.
-                return response.json();
-                })
-                .then(medicos => {
-                // utiliza os dados para preencher o formulário
-                form.rua.value = endereco.rua;
-                form.bairro.value = endereco.bairro;
-                form.cidade.value = endereco.cidade;
-                })
-                .catch(error => {
-                // Ocorreu um erro na comunicação com o servidor ou
-                // no processamento da requisição no PHP, que pode não
-                // ter retornado uma string JSON válida.
-                form.reset();
-                console.error('Falha inesperada: ' + error);
-            });
-        }
-    </script>
-
     <!--Rodapé-->
     <footer>
         © Copyright 2022. Todos os direitos reservados.
     </footer>
 
-</body>
+    <script src="./js/bootstrap.js"></script>
+    <script>
+        window.addEventListener("DOMContentLoaded", iniciaPagina);
 
+        function iniciaPagina() {
+            /*Chama função para adicionar Bootstrap*/
+            adicionaBootstrap();
+        }
+
+    </script>
+
+
+</body>
 
 </html>

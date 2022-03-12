@@ -37,21 +37,6 @@
     border-radius: 5px;
 }
 
-.tabela_head{
-    color: #085983;
-    background-color: azure;
-    border-left: black;
-}
-
-tr th{
-    width: 5%;
-    height: 5px;
-    padding: 20px;
-    border: 1px solid;
-
-    text-align: center;
-}
-
 #infMedico {
     display: none;
 }

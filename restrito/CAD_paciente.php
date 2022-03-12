@@ -27,15 +27,6 @@ try {
     if(! $stmt->execute([$nome, $sexo, $email, $telefone, $cep, $logradouro, $cidade, $estado]))
         throw new Exception('Falha no cadastro de pessoa');
 
-    // pegar id_pessoa de pessoa
-    
-    // $sql_select = <<<SQL
-    // SELECT id_pessoa 
-    // FROM pessoa
-    // SQL;
-    // $stmt = $pdo->query($sql_select);
-    // $id_pessoa = $stmt->fetch(PDO::FETCH_COLUMN);
-
     $id_pessoa = $pdo->lastInsertId();
     
     // inserir paciente
@@ -55,4 +46,3 @@ catch (Exception $e) {
     $pdo->rollBack();
     exit('Falha na transação: ' . $e->getMessage());
 }
-?>

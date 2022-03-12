@@ -23,7 +23,6 @@ catch (Exception $e) {
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Página Listagem de Pacientes">
-    <script src="../js/script.js"></script>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/style_restrito.css">
     <title>Lista de Pacientes</title>
@@ -67,18 +66,30 @@ catch (Exception $e) {
             <h2>Listar Pacientes</h2>
             <table class="tabela">
                 <tr class="tabela_head">
-                    <th>#</th>
-                    <th>Nome</th>
-                    <th>E-mail</th>
-                    <th>Telefone</th>
-                    <th>Tipo Sanguíneo</th>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Sexo</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">CEP</th>
+                    <th scope="col">Logradouro</th>
+                    <th scope="col">Cidade</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Peso</th>
+                    <th scope="col">Altura</th>
+                    <th scope="col">Tipo Sanguíneo</th>
                 </tr>
-
                 <?php
                     while ($row = $stmt->fetch()) {
                         $id_pessoa = $row['id_pessoa'];
                         $nome = $row['nome'];
-                        $sexo = $row['sexo'];
+                        if($row['sexo']=='m'){
+                            $sexo='Masculino';
+                        } else if($row['sexo']=='f'){
+                            $sexo='Feminino';
+                        } else {
+                            $sexo='Outro';
+                        }
                         $email = $row['email'];
                         $telefone = $row['telefone'];
                         $cep = $row['cep'];
@@ -91,18 +102,18 @@ catch (Exception $e) {
 
                         echo <<<HTML
                         <tr>
-                            <td>$id_pessoa</td> 
-                            <td>$nome</td>
-                            <td>$sexo</td>
-                            <td>$email</td>
-                            <td>$telefone</td>
-                            <td>$cep</td>
-                            <td>$logradouro</td>
-                            <td>$cidade</td>
-                            <td>$estado</td>
-                            <td>$peso</td>
-                            <td>$altura</td>
-                            <td>$tipoSanguineo</td>
+                            <th>$id_pessoa</th> 
+                            <th>$nome</th>
+                            <th>$sexo</th>
+                            <th>$email</th>
+                            <th>$telefone</th>
+                            <th>$cep</th>
+                            <th>$logradouro</th>
+                            <th>$cidade</th>
+                            <th>$estado</th>
+                            <th>$peso</th>
+                            <th>$altura</th>
+                            <th>$tipoSanguineo</th>
                         </tr>      
                         HTML;
                     }
@@ -117,6 +128,15 @@ catch (Exception $e) {
         © Copyright 2021. Todos os direitos reservados.
     </footer>
 
+    <script src="../js/bootstrap.js"></script>
+    <script>
+        window.addEventListener("DOMContentLoaded", iniciaPagina);
+
+        function iniciaPagina() {
+            /*Chama função para adicionar Bootstrap*/
+            adicionaBootstrap();
+        }
+    </script>
 </body>
 
 </html>

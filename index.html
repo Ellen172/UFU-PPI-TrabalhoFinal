@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Página Home">
-    <script src="./js/script.js"></script>
     <link rel="stylesheet" href="./css/style.css">
     <title>Home</title>
 </head>
@@ -20,7 +19,7 @@
     <nav>
         <a id="currently-active-tab" href="./index.html">Home</a>
         <a href="./galeria.html">Galeria</a>
-        <a href="./agendamento.html">Agendamento</a>
+        <a href="./agendamento.php">Agendamento</a>
         <a href="./cad_endereco.html">Novo Endereço</a>
         <a href="./login.html">Login</a>
     </nav>
@@ -60,7 +59,7 @@
                 <ul>
                     <li>Amor à vida;</li>
                     <li>Vontade de ajudar;</li>
-                    <li>Fome de conhecimento;</li>
+                    <li>Fome de conhecimento.</li>
                 </ul>
                 <p>Ademais, a clínica preza pelo respeito ao processo de cura e regeneração individual de cada
                     individuo,
@@ -76,6 +75,15 @@
         © Copyright 2021. Todos os direitos reservados.
     </footer>
 
+    <script src="./js/bootstrap.js"></script>
+    <script>
+        window.addEventListener("DOMContentLoaded", iniciaPagina);
+
+        function iniciaPagina() {
+            /*Chama função para adicionar Bootstrap*/
+            adicionaBootstrap();
+        }
+    </script>
 </body>
 
 

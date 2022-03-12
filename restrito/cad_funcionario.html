@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Página Home">
-    <script src="../js/medico.js"></script>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/style_restrito.css">
     <title>Cadastro de Funcionário</title>
@@ -46,7 +45,7 @@
     <div class="container">
         <main>
             <h2>Cadastro de Funcionário</h2>
-            <form action="cadastro.php" method="post" enctype="multipart/form-data">
+            <form action="CAD_funcionario.php" method="post" enctype="multipart/form-data">
                 <fieldset>
                     <legend>Dados Funcionario</legend>
                     <div class="row m-3 g-3">
@@ -93,16 +92,7 @@
                             <label class="form-label" for="cidade">Cidade:</label>
                             <input class="form-control" type="text" id="cidade" name="cidade" required>
                         </div>
-                        <div class="col-md-3">
-                            <label class="form-label" for="tipologradouro">Tipo de Logradouro:</label>
-                            <select class="form-select" id="tipologradouro" name="tipologradouro" required>
-                                <option value="">Selecione..</option>
-                                <option value="rua">Rua</option>
-                                <option value="avenida">Avenida</option>
-                                <option value="praça">Praça</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6">
+                        <div class="col-md-9">
                             <label class="form-label" for="logradouro">Logradouro: </label>
                             <input class="form-control" type="text" id="logradouro" name="logradouro" required>
                         </div>
@@ -179,6 +169,30 @@
         © Copyright 2021. Todos os direitos reservados.
     </footer>
 
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/estados.js"></script>
+    <script src="../js/buscaEndereco.js"></script>
+    <script src="../js/cadastraMedico.js"></script>
+    <script>
+        window.addEventListener("DOMContentLoaded", iniciaPagina);
+
+        function iniciaPagina() {
+            /*Chama função para adicionar Bootstrap*/
+            adicionaBootstrap();
+
+            /*Define quando a função adicionaEstados é executada*/
+            const campoEstado = document.querySelector("#estado");
+            campoEstado.addEventListener("click", adicionaEstados(campoEstado));
+            
+            /*Define quando a função de buscar endereço pelo cep é executada*/
+            const inputCep = document.querySelector("#cep");
+            inputCep.onkeyup = () => buscaEndereco(inputCep.value);
+
+            /*Chama a função para cadastro de medico*/
+            cadastraMedico();
+        }
+
+    </script>
 </body>
 
 
