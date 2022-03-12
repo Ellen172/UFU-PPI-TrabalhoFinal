@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Agendamento de consulta">
-    <script src="./js/script.js"></script>
     <link rel="stylesheet" href="./css/style.css">
     <title>Agendamento</title>
 </head>
@@ -43,11 +42,13 @@
                                 <option value="">Selecione..</option>
                             </select>
                         </div>
-                        <div class="cols-sm-6">
+                    </div>
+                    <div class="row m-3 g-3">
+                        <div class="col-sm-4">
                             <label for="data" class="form-label">Data: </label>
                             <input type="date" id="data" name="data" class="form-control">
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-8">
                             <label for="horario" class="form-label">Horário: </label>
                             <select id="horario" name="horario" class="form-select">
                                 <option value="">Selecione..</option>
@@ -97,6 +98,16 @@
     <footer>
         © Copyright 2022. Todos os direitos reservados.
     </footer>
+
+    <script src="./js/bootstrap.js"></script>
+    <script>
+        window.addEventListener("DOMContentLoaded", iniciaPagina);
+
+        function iniciaPagina() {
+            /*Chama função para adicionar Bootstrap*/
+            adicionaBootstrap();
+        }
+    </script>
 
 </body>
 

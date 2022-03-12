@@ -26,7 +26,6 @@ catch(Exception $e){
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Página Listagem de Agendamentos">
-    <script src="../js/script.js"></script>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/style_restrito.css">
     <title>Lista de Endereços</title>
@@ -111,6 +110,16 @@ catch(Exception $e){
     <footer>
         © Copyright 2021. Todos os direitos reservados.
     </footer>
+
+    <script src="../js/bootstrap.js"></script>
+    <script>
+        window.addEventListener("DOMContentLoaded", iniciaPagina);
+
+        function iniciaPagina() {
+            /*Chama função para adicionar Bootstrap*/
+            adicionaBootstrap();
+        }
+    </script>
 
 </body>
 

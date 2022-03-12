@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Cadastro de Endereço">
-    <script src="./js/endereco.js"></script>
     <link rel="stylesheet" href="./css/style.css">
     <title>Cadastro de Endereço</title>
 </head>
@@ -78,6 +77,22 @@
     <footer>
         © Copyright 2021. Todos os direitos reservados.
     </footer>
+
+
+    <script src="./js/estados.js"></script>
+    <script src="./js/bootstrap.js"></script>
+    <script>
+        window.addEventListener("DOMContentLoaded", iniciaPagina);
+
+        function iniciaPagina() {
+            /*Chama função para adicionar Bootstrap*/
+            adicionaBootstrap();
+
+            /*Define quando a função adicionaEstados é executada*/
+            const campoEstado = document.querySelector("#estado");
+            campoEstado.addEventListener("click", adicionaEstados(campoEstado));
+        }
+    </script>
 
 </body>
 

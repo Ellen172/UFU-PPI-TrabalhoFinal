@@ -1,11 +1,4 @@
 
-window.addEventListener("DOMContentLoaded", iniciaPagina);
-
-function iniciaPagina() {
-    /*Chama função para adicionar Bootstrap*/
-    adicionaBootstrap();
-}
-
 /* Adiciona Bootstrap*/
 function adicionaBootstrap() {
     //Criamos o elemento meta que guarda o código para responsividade
