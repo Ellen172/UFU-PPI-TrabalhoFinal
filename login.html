@@ -24,16 +24,16 @@
                     <input type="password" id="senha" name="senha" class="form-control" placeholder="Senha" required>
                     <label for="senha">Senha</label>
                 </div>
-                
-                <div id="login-failed">
-					O email/senha inserido(s) estão incorretos.
-                </div>
             </form>
+            
+			<div id="login-failed">
+				O email/senha inserido(s) estão incorretos.
+			</div>
 
             <!-- Botões -->
             <div>
                 <!-- Entrar -->
-                <a class="btn btn-primary" href="./restrito/cad_funcionario.html" role="button">Entrar</a>
+                <a class="btn btn-primary" type="submit" role="button">Entrar</a>
 
                 <!-- Voltar -->
                 <a class="btn btn-danger" href="index.html" role="button">Cancelar</a>
@@ -41,6 +41,7 @@
         </main>
     </div>
 
+	<script src="./js/DoLogin.js"></script>
     <script src="./js/bootstrap.js"></script>
     <script>
         window.addEventListener("DOMContentLoaded", iniciaPagina);
@@ -49,6 +50,12 @@
             /*Chama função para adicionar Bootstrap*/
             adicionaBootstrap();
         }
+        
+        const button = document.querySelector(".btn-primary");
+		button.onclick = () => {
+			DoLogin();
+		};
+		
     </script>
 </body>
 
