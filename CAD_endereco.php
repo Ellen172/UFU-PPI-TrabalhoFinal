@@ -5,7 +5,7 @@ $pdo = mysqlConnect();
 
 $cep = $logradouro = $cidade = $estado = "";
 
-$cep = $_POST["CEP"] ?? "";
+$cep = $_POST["cep"] ?? "";
 $logradouro = $_POST["logradouro"] ?? "";
 $cidade = $_POST["cidade"] ?? "";
 $estado = $_POST["estado"] ?? "";
@@ -22,7 +22,6 @@ try{
     $stmt->execute([
         $cep, $logradouro, $cidade, $estado
     ]);
-
     header("location: cad_endereco.html");
     exit(); 
 }

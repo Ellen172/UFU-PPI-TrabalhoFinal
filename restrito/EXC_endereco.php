@@ -2,7 +2,7 @@
 require "../conexaoMysql.php";
 $pdo = mysqlConnect();
 
-$id = $_GET["id"] ?? "";
+$id_endereco = $_GET["id_endereco"] ?? "";
 
 try {
 
@@ -16,7 +16,7 @@ try {
   // ataques do tipo SQL Injection, pois a declaração
   // SQL contem um parâmetro (cpf) vindo da URL
   $stmt = $pdo->prepare($sql);
-  $stmt->execute([$id]);
+  $stmt->execute([$id_endereco]);
 
   header("location: LIST_endereco.php");
   exit();
