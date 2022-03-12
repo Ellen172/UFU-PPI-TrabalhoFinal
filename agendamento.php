@@ -1,3 +1,21 @@
+<?php
+
+require "conexaoMysql.php";
+$pdo = mysqlConnect();
+
+try {
+    $sql = <<<SQL
+    SELECT especialidade
+    FROM medico
+    SQL;
+
+    $stmt = $pdo->query($sql);
+} 
+catch (Exception $e) {
+    exit('Ocorreu uma falha: ' . $e->getMessage());
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -19,7 +37,7 @@
     <nav>
         <a href="./index.html">Home</a>
         <a href="./galeria.html">Galeria</a>
-        <a id="currently-active-tab" href="./agendamento.html">Agendamento</a>
+        <a id="currently-active-tab" href="./agendamento.php">Agendamento</a>
         <a href="./cad_endereco.html">Novo Endereço</a>
         <a href="./login.html">Login</a>
     </nav>
@@ -34,6 +52,16 @@
                             <label for="especialidade" class="form-label">Especialidade: </label>
                             <select id="especialidade" name="especialidade" class="form-select">
                                 <option value="">Selecione..</option>
+                                <?php
+                                    while ($row = $stmt->fetch()) {
+                                        $especialidade = $row['especialidade'];
+
+                                        echo <<<HTML
+                                        <option value="$especialidade">$especialidade</option>
+                                        HTML;
+                                    }
+
+                                ?>
                             </select>
                         </div>
                         <div class="col-sm-8">
@@ -107,9 +135,10 @@
             /*Chama função para adicionar Bootstrap*/
             adicionaBootstrap();
         }
+
     </script>
 
-</body>
 
+</body>
 
 </html>
