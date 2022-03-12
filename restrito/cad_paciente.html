@@ -165,6 +165,10 @@
             /*Define quando a função adicionaEstados é executada*/
             const campoEstado = document.querySelector("#estado");
             campoEstado.addEventListener("click", adicionaEstados(campoEstado));
+            
+            /*Define quando a função de buscar endereço pelo cep é executada*/
+            const inputCep = document.querySelector("#cep");
+            inputCep.onkeyup = () => buscaEndereco(inputCep.value);
         }
     </script>
 </body>
