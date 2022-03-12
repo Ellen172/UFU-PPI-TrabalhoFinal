@@ -5,7 +5,7 @@ $pdo = mysqlConnect();
 
 try{
     $sql = <<<SQL
-    SELECT id, cep, logradouro, cidade, estado
+    SELECT id_endereco, cep, logradouro, cidade, estado
     FROM endereco
     SQL;
 
@@ -25,8 +25,9 @@ catch(Exception $e){
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Página Listagem de Endereços">
+    <meta name="description" content="Página Listagem de Agendamentos">
     <script src="../js/script.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/style_restrito.css">
     <title>Lista de Endereços</title>
 </head>
@@ -79,7 +80,7 @@ catch(Exception $e){
                 while($row = $stmt->fetch()){
 
                     //Prevenção de ataques XSS
-                    $id = $row["id"];
+                    $id_endereco = $row["id_endereco"];
                     $cep = htmlspecialchars($row["cep"]);
                     $logradouro = htmlspecialchars($row["logradouro"]);
                     $cidade = htmlspecialchars($row["cidade"]);
@@ -87,17 +88,16 @@ catch(Exception $e){
 
                     echo <<<HTML
                         <tr>
-                            <td>
-                                <a href="EXC_endereco.php?id=$id">
+                            <th>
+                                <a href="EXC_endereco.php?id_endereco=$id_endereco">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
                                 <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
                                 </svg></a>
-                            </td>
-                            <td>$cep</td>
-                            <td>$logradouro</td>
-                            <td>$bairro</td>
-                            <td>$cidade</td>
-                            <td>$estado</td>
+                            </th>
+                            <th>$cep</th>
+                            <th>$cidade</th>
+                            <th>$estado</th>
+                            <th>$logradouro</th>
                         </tr>
                     HTML;
                 }
