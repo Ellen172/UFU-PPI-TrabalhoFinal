@@ -46,7 +46,7 @@
     <div class="container">
         <main>
             <h2>Cadastro de Funcionário</h2>
-            <form action="cadastro.php" method="post" enctype="multipart/form-data">
+            <form action="CAD_funcionario.php" method="post" enctype="multipart/form-data">
                 <fieldset>
                     <legend>Dados Funcionario</legend>
                     <div class="row m-3 g-3">
@@ -93,16 +93,7 @@
                             <label class="form-label" for="cidade">Cidade:</label>
                             <input class="form-control" type="text" id="cidade" name="cidade" required>
                         </div>
-                        <div class="col-md-3">
-                            <label class="form-label" for="tipologradouro">Tipo de Logradouro:</label>
-                            <select class="form-select" id="tipologradouro" name="tipologradouro" required>
-                                <option value="">Selecione..</option>
-                                <option value="rua">Rua</option>
-                                <option value="avenida">Avenida</option>
-                                <option value="praça">Praça</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6">
+                        <div class="col-md-9">
                             <label class="form-label" for="logradouro">Logradouro: </label>
                             <input class="form-control" type="text" id="logradouro" name="logradouro" required>
                         </div>

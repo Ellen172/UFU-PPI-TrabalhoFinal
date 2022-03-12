@@ -27,12 +27,6 @@ function iniciaPagina() {
     const radioOutro = document.getElementById("outro");
     const fieldsetInfMedico = document.querySelector("#infMedico");
 
-    // if(radioMedico.checked == true){
-    //     fieldsetInfMedico.style.display = 'block';
-    // } else {
-    //     fieldsetInfMedico.style.display = 'none';
-    // }
-
     radioMedico.onclick = () => {
         fieldsetInfMedico.style.display = 'block';
     } 
