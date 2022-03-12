@@ -95,7 +95,7 @@ function buscaEndereco(cep) {
 	if (cep.length != 9) return;
 
 	let xhr = new XMLHttpRequest();
-	xhr.open("GET", "busca_endereco.php?cep=" + cep, true);
+	xhr.open("GET", "../restrito/busca_endereco.php?cep=" + cep, true);
 
 	xhr.onload = function () {
 		
