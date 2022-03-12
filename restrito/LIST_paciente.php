@@ -51,10 +51,10 @@ catch (Exception $e) {
             Listar
         </button>
         <div class="dropdown-menu">
-            <a class="dropdown-item" href="lista_funcionario.html">Listar Funcionarios</a>
+            <a class="dropdown-item" href="LIST_funcionario.php">Listar Funcionarios</a>
             <a class="dropdown-item" id="currently-active-tab" href="LIST_paciente.php">Listar Pacientes</a>
             <a class="dropdown-item" href="LIST_endereco.php">Listar Endereços</a>
-            <a class="dropdown-item" href="lista_agendamento.html">Agendamentos e Consultas dos Clientes</a>
+            <a class="dropdown-item" href="LIST_agendamento.php">Agendamentos e Consultas dos Clientes</a>
             <a class="dropdown-item" href="lista_consultas.html">Meus Agendamentos e Consultas</a>
         </div>
 
@@ -64,9 +64,8 @@ catch (Exception $e) {
     <div class="container">
         <main>
             <h2>Listar Pacientes</h2>
-            <table>
-            <thead>
-                <tr>
+            <table class="tabela">
+                <tr class="tabela_head">
                     <th scope="col">#</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Sexo</th>
@@ -80,8 +79,6 @@ catch (Exception $e) {
                     <th scope="col">Altura</th>
                     <th scope="col">Tipo Sanguíneo</th>
                 </tr>
-            </thead>
-            <tbody>
                 <?php
                     while ($row = $stmt->fetch()) {
                         $id_pessoa = $row['id_pessoa'];
@@ -105,23 +102,22 @@ catch (Exception $e) {
 
                         echo <<<HTML
                         <tr>
-                            <td>$id_pessoa</td> 
-                            <td>$nome</td>
-                            <td>$sexo</td>
-                            <td>$email</td>
-                            <td>$telefone</td>
-                            <td>$cep</td>
-                            <td>$logradouro</td>
-                            <td>$cidade</td>
-                            <td>$estado</td>
-                            <td>$peso</td>
-                            <td>$altura</td>
-                            <td>$tipoSanguineo</td>
+                            <th>$id_pessoa</th> 
+                            <th>$nome</th>
+                            <th>$sexo</th>
+                            <th>$email</th>
+                            <th>$telefone</th>
+                            <th>$cep</th>
+                            <th>$logradouro</th>
+                            <th>$cidade</th>
+                            <th>$estado</th>
+                            <th>$peso</th>
+                            <th>$altura</th>
+                            <th>$tipoSanguineo</th>
                         </tr>      
                         HTML;
                     }
                 ?>
-            </tbody>
             </table>
 
         </main>

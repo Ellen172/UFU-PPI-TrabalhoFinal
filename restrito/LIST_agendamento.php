@@ -1,12 +1,34 @@
+<?php
+
+require "../conexaoMysql.php";
+$pdo = mysqlConnect();
+
+try{
+    $sql = <<<SQL
+    SELECT * FROM agenda INNER JOIN medico
+    WHERE agenda.id_medico = medico.id_medico
+    SQL;
+
+    //Não será necessário usar prepare statements nesse caso
+    //Já que nenhum parâmetro preenchido pelo usuário é usado na Query
+    //Como há dados a serem processados usaremos o método query
+    $stmt = $pdo->query($sql);
+}
+catch(Exception $e){
+    exit("Ocorreu uma falha: " . $e->getMessage());
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Página Listagem de Funcionários">
+    <meta name="description" content="Página Listagem de Agendamentos">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/style_restrito.css">
-    <title>Lista de Funcionários</title>
+    <title>Lista de Agendamentos</title>
 </head>
 
 <body>
@@ -19,7 +41,7 @@
     <!--Menu de naveção, com links para todas as páginas-->
     <div class="dropdown">
         <button class="btn btnNav dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
+            aria-haspopup="true" aria-expanded="false">
             Cadastrar
         </button>
         <div class="dropdown-menu">
@@ -32,10 +54,10 @@
             Listar
         </button>
         <div class="dropdown-menu">
-            <a class="dropdown-item" id="currently-active-tab" href="lista_funcionario.html">Listar Funcionarios</a>
+            <a class="dropdown-item" href="LIST_funcionario.php">Listar Funcionarios</a>
             <a class="dropdown-item" href="LIST_paciente.php">Listar Pacientes</a>
             <a class="dropdown-item" href="LIST_endereco.php">Listar Endereços</a>
-            <a class="dropdown-item" href="lista_agendamento.html">Agendamentos e Consultas dos Clientes</a>
+            <a class="dropdown-item" id="currently-active-tab" href="LIST_agendamento.php">Agendamentos e Consultas dos Clientes</a>
             <a class="dropdown-item" href="lista_consultas.html">Meus Agendamentos e Consultas</a>
         </div>
 
@@ -44,24 +66,40 @@
 
     <div class="container">
         <main>
-            <h2>Listar Funcionarios</h2>
+            <h2>Listar Agendamentos</h2>
             <table class="tabela">
                 <tr class="tabela_head">
                     <th>#</th>
+                    <th>Data</th>
+                    <th>Horário</th>
                     <th>Nome</th>
-                    <th>E-mail</th>
-                    <th>Telefone</th>
-                    <th>Contratado</th>
-                    <th>Salário</th>
+                    <th>Sexo</th>
+                    <th>Email</th>
+                    <th>Médico</th>
                 </tr>
-                <tr>
-                    <th>1</th>
-                    <th>Carlos da Silva Nogueira</th>
-                    <th>carlos.silva@ufu.br</th>
-                    <th>(41) 9 1226-0354</th>
-                    <th>21/12/2000</th>
-                    <th>R$ 5.000,00</th>
-                </tr>
+                <?php
+                while($row = $stmt->fetch()){
+
+                    //Prevenção de ataques XSS
+                    $dia = htmlspecialchars($row["dia"]);
+                    $horario = htmlspecialchars($row["horario"]);
+                    $nome = htmlspecialchars($row["nome"]);
+                    $sexo = htmlspecialchars($row["sexo"]);
+                    $email = htmlspecialchars($row["email"]);
+                    $medico = htmlspecialchars($row["especialidade"]);
+
+                    echo <<<HTML
+                        <tr>
+                            <th>$dia</th>
+                            <th>$horario</th>
+                            <th>$nome</th>
+                            <th>$sexo</th>
+                            <th>$email</th>
+                            <th>$medico</th>
+                        </tr>
+                    HTML;
+                }
+            ?>
             </table>
 
         </main>
@@ -81,6 +119,7 @@
             adicionaBootstrap();
         }
     </script>
+
 </body>
 
 

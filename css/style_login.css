@@ -39,3 +39,13 @@ main>h2 {
     text-align: center;
     margin-bottom: 2rem;
 }
+
+#login-failed {
+	background-color: red;
+	color: azure;
+	text-align: center;
+	padding: 10px;
+	border-radius: 5px;
+	width: 60%;
+	display: none;
+}
