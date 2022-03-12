@@ -1,4 +1,4 @@
-    <?php
+<?php
     require "../conexaoMysql.php";
     $pdo = mysqlConnect();
 
@@ -42,15 +42,13 @@
             throw new Exception('Falha ao inserir na tabela funcionario');
 
         if($profissao == "medico"){
-            $idFuncionario = $pdo->lastInsertId();
-
             $sqlMedico = <<<SQL
                 INSERT INTO medico (id_medico, especialidade, crm)
                 VALUES (?, ?, ?)
             SQL;
 
             $stmt = $pdo->prepare($sqlMedico);
-            if(!$stmt->execute([$idFuncionario, $especialidade, $CRM]))
+            if(!$stmt->execute([$idPessoa, $especialidade, $CRM]))
                 throw new Exception('Falha ao inserir na tabela medico');
         }
 
@@ -63,7 +61,3 @@
         $pdo->rollBack();
         exit('Falha na transação: ' . $e->getMessage());
     }
-
-
-
-
