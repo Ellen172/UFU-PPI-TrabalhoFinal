@@ -21,6 +21,10 @@ function iniciaPagina() {
     /*Define quando a função adicionaEstados é executada*/
     const campoEstado = document.querySelector("#estado");
     campoEstado.addEventListener("click", adicionaEstados());
+    
+    /*Define quando a função de buscar endereço pelo cep é executada*/
+    const inputCep = document.querySelector("#cep");
+    inputCep.onkeyup = () => buscaEndereco(inputCep.value);
 
     /*Define quando as informações do médico serão preenchidas*/
     const radioMedico = document.getElementById("medico");
@@ -85,5 +89,45 @@ function adicionaEstados() {
         //Opções é filho do campo estado
         campoEstado.appendChild(novoOpt);
     }
+}
+
+function buscaEndereco(cep) {
+	if (cep.length != 9) return;
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("GET", "busca_endereco.php?cep=" + cep, true);
+
+	xhr.onload = function () {
+		
+		// verifica o código de status retornado pelo servidor
+		if (xhr.status != 200) {
+		  console.error("Falha inesperada: " + xhr.responseText);
+		  return;
+		}
+		
+		// converte a string JSON para objeto JavaScript
+		try {
+		  var endereco = JSON.parse(xhr.responseText);
+		}
+		catch (e) {
+		  console.error("String JSON inválida: " + xhr.responseText);
+		  return;
+		}
+		
+		// utiliza os dados retornados para preencher formulário
+		let estado = document.getElementById("#estado");
+		let cidade = document.getElementById("#cidade");
+		let logradouro = document.getElementById("#logradouro");
+
+		estado.value = endereco.estado;
+		cidade.value = endereco.cidade;
+		logradouro.value = endereco.logradouro;
+	}
+
+	xhr.onerror = function () {
+		console.error("Erro de rede - requisição não finalizada");
+	};
+
+	xhr.send();
 }
 
