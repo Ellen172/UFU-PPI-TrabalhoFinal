@@ -3,17 +3,6 @@
 require "conexaoMysql.php";
 $pdo = mysqlConnect();
 
-try {
-    $sql = <<<SQL
-    SELECT especialidade
-    FROM medico
-    SQL;
-
-    $stmt = $pdo->query($sql);
-} 
-catch (Exception $e) {
-    exit('Ocorreu uma falha: ' . $e->getMessage());
-}
 ?>
 
 <!DOCTYPE html>
@@ -47,12 +36,20 @@ catch (Exception $e) {
             <form>
                 <fieldset>
                     <legend>Dados da consulta</legend>
+                    
                     <div class="row m-3 g-3">
                         <div class="col-sm-4">
                             <label for="especialidade" class="form-label">Especialidade: </label>
                             <select id="especialidade" name="especialidade" class="form-select">
                                 <option value="">Selecione..</option>
                                 <?php
+                                    $sql = <<<SQL
+                                    SELECT DISTINCT (especialidade)
+                                    FROM medico
+                                    SQL;
+
+                                    $stmt = $pdo->query($sql);
+
                                     while ($row = $stmt->fetch()) {
                                         $especialidade = $row['especialidade'];
 
@@ -60,13 +57,13 @@ catch (Exception $e) {
                                         <option value="$especialidade">$especialidade</option>
                                         HTML;
                                     }
-
-                                ?>
+                                    
+                                    ?>
                             </select>
                         </div>
                         <div class="col-sm-8">
-                            <label for="nome" class="form-label">Nome: </label>
-                            <select id="nome" name="nome" class="form-select">
+                            <label for="nome" class="form-label">Medico: </label>
+                            <select id="medico" name="medico" class="form-select">
                                 <option value="">Selecione..</option>
                             </select>
                         </div>
@@ -128,12 +125,21 @@ catch (Exception $e) {
     </footer>
 
     <script src="./js/bootstrap.js"></script>
+    <script src="./js/agendamento.js"></script>
     <script>
         window.addEventListener("DOMContentLoaded", iniciaPagina);
 
         function iniciaPagina() {
             /*Chama função para adicionar Bootstrap*/
             adicionaBootstrap();
+
+            /*Chama função para encontrar medicos de acordo com select*/
+            let selectEspecialidade = document.getElementById("especialidade");
+
+            selectEspecialidade.addEventListener("change", (event) => {
+                let especialidade = selectEspecialidade.options[selectEspecialidade.selectedIndex].value;
+                addOptionsSelectMedico(especialidade);
+            });
         }
 
     </script>
