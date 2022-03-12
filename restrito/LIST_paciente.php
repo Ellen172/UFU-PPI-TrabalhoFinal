@@ -1,3 +1,30 @@
+<?php 
+
+require "conexaoMysql.php";
+$pdo = mysqlConnect();
+
+try {
+    // recuperando elementos da tabela pessoa
+    $sql_pessoa = <<<SQL
+    SELECT nome, sexo, email, telefone, cep, logradouro, cidade, estado
+    FROM pessoa
+    SQL;
+
+    $stmt = $pdo->query($sql_pessoa);
+    
+
+}
+catch(Exception $e){
+    if($e->errorInfo[1] === 1062)
+        exit("Dados duplicados: " . $e->getMessage());
+    else
+        exit("Falha ao cadastrar dados: " . $e->getMessage());
+
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
