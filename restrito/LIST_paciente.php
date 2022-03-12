@@ -1,3 +1,22 @@
+<?php
+
+require "../conexaoMysql.php";
+$pdo = mysqlConnect();
+
+try {
+    $sql = <<<SQL
+    SELECT * FROM paciente INNER JOIN pessoa
+    WHERE paciente.id_paciente = pessoa.id_pessoa
+    SQL;
+
+    $stmt = $pdo->query($sql);
+} 
+catch (Exception $e) {
+    exit('Ocorreu uma falha: ' . $e->getMessage());
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -34,7 +53,7 @@
         </button>
         <div class="dropdown-menu">
             <a class="dropdown-item" href="lista_funcionario.html">Listar Funcionarios</a>
-            <a class="dropdown-item" id="currently-active-tab" href="lista_paciente.html">Listar Pacientes</a>
+            <a class="dropdown-item" id="currently-active-tab" href="LIST_paciente.php">Listar Pacientes</a>
             <a class="dropdown-item" href="LIST_endereco.php">Listar Endereços</a>
             <a class="dropdown-item" href="lista_agendamento.html">Agendamentos e Consultas dos Clientes</a>
             <a class="dropdown-item" href="lista_consultas.html">Meus Agendamentos e Consultas</a>
@@ -54,13 +73,40 @@
                     <th>Telefone</th>
                     <th>Tipo Sanguíneo</th>
                 </tr>
-                <tr>
-                    <th>1</th>
-                    <th>Alana Silver Cross</th>
-                    <th>alana.silver@ufu.br</th>
-                    <th>(41) 9 1226-0354</th>
-                    <th>O+</th>
-                </tr>
+
+                <?php
+                    while ($row = $stmt->fetch()) {
+                        $id_pessoa = $row['id_pessoa'];
+                        $nome = $row['nome'];
+                        $sexo = $row['sexo'];
+                        $email = $row['email'];
+                        $telefone = $row['telefone'];
+                        $cep = $row['cep'];
+                        $logradouro = $row['logradouro'];
+                        $cidade = $row['cidade'];
+                        $estado = $row['estado'];
+                        $peso = $row['peso'];
+                        $altura = $row['altura'];
+                        $tipoSanguineo = $row['tipoSanguineo'];
+
+                        echo <<<HTML
+                        <tr>
+                            <td>$id_pessoa</td> 
+                            <td>$nome</td>
+                            <td>$sexo</td>
+                            <td>$email</td>
+                            <td>$telefone</td>
+                            <td>$cep</td>
+                            <td>$logradouro</td>
+                            <td>$cidade</td>
+                            <td>$estado</td>
+                            <td>$peso</td>
+                            <td>$altura</td>
+                            <td>$tipoSanguineo</td>
+                        </tr>      
+                        HTML;
+                    }
+                ?>
             </table>
 
         </main>
