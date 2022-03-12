@@ -27,7 +27,7 @@
 
     <div class="container">
         <main>
-            <form>
+            <form action="CAD_consulta.php" method="post" enctype="multipart/form-data">
                 <fieldset>
                     <legend>Dados da consulta</legend>
                     <div class="row m-3 g-3">
@@ -38,8 +38,8 @@
                             </select>
                         </div>
                         <div class="col-8">
-                            <label for="nome" class="form-label">Nome: </label>
-                            <select id="nome" name="nome" class="form-select">
+                            <label for="medico" class="form-label">Nome: </label>
+                            <select id="medico" name="medico" class="form-select">
                                 <option value="">Selecione..</option>
                             </select>
                         </div>
@@ -59,8 +59,8 @@
                     <legend>Dados do Paciente</legend>
                     <div class="row m-3 g-3">
                         <div class="col-4">
-                            <label for="nome" class="form-label">Nome:</label>
-                            <input type="text" id="nome" name="nome" class="form-control" required>
+                            <label for="paciente" class="form-label">Nome:</label>
+                            <input type="text" id="paciente" name="paciente" class="form-control" required>
                         </div>
                         <div class="col-4">
                             <label for="email" class="form-label">E-mail:</label>
@@ -92,6 +92,47 @@
             </form>
         </main>
     </div>
+
+    <script>
+        function buscaMedico(){
+            let form = document.querySelector("form");
+      
+            fetch("CONS_medico.php?" + cep)
+                .then(response => {
+                if (!response.ok) {
+                    // A requisição finalizou com sucesso a nível de rede,
+                    // porém o servidor retornou um código de status
+                    // fora da faixa 200-299 (indicando outros possíveis erros).
+                    // Neste caso, lança uma exceção para que a promise seja
+                    // rejeitada. Como o próximo 'then' não possui callback 
+                    // de erros, será executada a função do próximo 'catch'.
+                    throw new Error(response.status);
+                    // return Promise.reject(response.status);
+                }
+
+                // Requisição finalizada com sucesso e o servidor
+                // retornou um código de status de sucesso (200-299). 
+                // O método json() faz a leitura dos dados de forma 
+                // assíncrona e converte para um objeto JS. Qdo essa 
+                // operação finalizar com sucesso, a função de callback
+                // do próximo then receberá o resultado e será executada.
+                return response.json();
+                })
+                .then(medicos => {
+                // utiliza os dados para preencher o formulário
+                form.rua.value = endereco.rua;
+                form.bairro.value = endereco.bairro;
+                form.cidade.value = endereco.cidade;
+                })
+                .catch(error => {
+                // Ocorreu um erro na comunicação com o servidor ou
+                // no processamento da requisição no PHP, que pode não
+                // ter retornado uma string JSON válida.
+                form.reset();
+                console.error('Falha inesperada: ' + error);
+            });
+        }
+    </script>
 
     <!--Rodapé-->
     <footer>

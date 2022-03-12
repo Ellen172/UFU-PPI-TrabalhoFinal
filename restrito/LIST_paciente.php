@@ -52,7 +52,7 @@ catch (Exception $e) {
             Listar
         </button>
         <div class="dropdown-menu">
-            <a class="dropdown-item" href="lista_funcionario.html">Listar Funcionarios</a>
+            <a class="dropdown-item" href="LIST_funcionario.php">Listar Funcionarios</a>
             <a class="dropdown-item" id="currently-active-tab" href="LIST_paciente.php">Listar Pacientes</a>
             <a class="dropdown-item" href="LIST_endereco.php">Listar Endereços</a>
             <a class="dropdown-item" href="lista_agendamento.html">Agendamentos e Consultas dos Clientes</a>
