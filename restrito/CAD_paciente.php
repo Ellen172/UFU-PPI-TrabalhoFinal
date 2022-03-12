@@ -28,15 +28,23 @@ try {
         throw new Exception('Falha no cadastro de pessoa');
 
     // pegar id_pessoa de pessoa
+    
+    // $sql_select = <<<SQL
+    // SELECT id_pessoa 
+    // FROM pessoa
+    // SQL;
+    // $stmt = $pdo->query($sql_select);
+    // $id_pessoa = $stmt->fetch(PDO::FETCH_COLUMN);
+
     $id_pessoa = $pdo->lastInsertId();
     
     // inserir paciente
     $sql2 = <<<SQL
-    INSERT INTO paciente (peso, altura, tipoSanguineo, id_pessoa)
+    INSERT INTO paciente (id_paciente, peso, altura, tipoSanguineo)
     VALUES (?, ?, ?, ?) 
     SQL;
     $stmt = $pdo->prepare($sql2);
-    if(! $stmt->execute([$peso, $altura, $tipoSanguineo, $id_pessoa]))
+    if(! $stmt->execute([$id_pessoa, $peso, $altura, $tipoSanguineo]))
         throw new Exception('Falha no cadastro de paciente');
 
     $pdo->commit();
