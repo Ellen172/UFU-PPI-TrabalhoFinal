@@ -65,20 +65,35 @@ catch (Exception $e) {
     <div class="container">
         <main>
             <h2>Listar Pacientes</h2>
-            <table class="tabela">
-                <tr class="tabela_head">
-                    <th>#</th>
-                    <th>Nome</th>
-                    <th>E-mail</th>
-                    <th>Telefone</th>
-                    <th>Tipo Sanguíneo</th>
+            <table>
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Sexo</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">CEP</th>
+                    <th scope="col">Logradouro</th>
+                    <th scope="col">Cidade</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Peso</th>
+                    <th scope="col">Altura</th>
+                    <th scope="col">Tipo Sanguíneo</th>
                 </tr>
-
+            </thead>
+            <tbody>
                 <?php
                     while ($row = $stmt->fetch()) {
                         $id_pessoa = $row['id_pessoa'];
                         $nome = $row['nome'];
-                        $sexo = $row['sexo'];
+                        if($row['sexo']=='m'){
+                            $sexo='Masculino';
+                        } else if($row['sexo']=='f'){
+                            $sexo='Feminino';
+                        } else {
+                            $sexo='Outro';
+                        }
                         $email = $row['email'];
                         $telefone = $row['telefone'];
                         $cep = $row['cep'];
@@ -107,6 +122,7 @@ catch (Exception $e) {
                         HTML;
                     }
                 ?>
+            </tbody>
             </table>
 
         </main>
