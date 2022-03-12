@@ -115,9 +115,9 @@ function buscaEndereco(cep) {
 		}
 		
 		// utiliza os dados retornados para preencher formulário
-		let estado = document.getElementById("#estado");
-		let cidade = document.getElementById("#cidade");
-		let logradouro = document.getElementById("#logradouro");
+		let estado = document.getElementById("estado");
+		let cidade = document.getElementById("cidade");
+		let logradouro = document.getElementById("logradouro");
 
 		estado.value = endereco.estado;
 		cidade.value = endereco.cidade;
