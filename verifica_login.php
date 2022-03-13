@@ -18,36 +18,19 @@
     $email = $_POST["email"] ?? "";
     $senha = $_POST["senha"] ?? "";
 
-    $sqlEmail = <<<SQL
-        SELECT email
-        FROM pessoa
-        WHERE email = ?
+    $sql = <<<SQL
+        SELECT email, senhaHash FROM funcionario INNER JOIN pessoa
+        WHERE funcionario.id funcionario = pessoa.id pessoa and email = ?
         SQL;
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$email]);
     $row = $stmt->fetch();
-    
-    if($row != ""){
-		$idPessoa = pdo->lastInsertId();
-    
-		$sqlSenha = <<<SQL
-			SELECT senhaHash
-			FROM funcionario
-			WHERE id_funcionario = $idPessoa;
-			SQL;
-			
-		$stmt = $pdo->query($sqlSenha);
-		$row = $stmt->fetch();
-		
-		$IsSucess = false;
-		
-		if(password_verify($senha, $row['senhaHash'])) $IsSucess = true;
-		
-    }
+	
+	$IsSucess = false;
+	
+	if(password_verify($senha, $row['senhaHash'])) $IsSucess = true;
     
     $RequestResponse = new RequestResponse($IsSucess, "restrito/cad_funcionario.html");
 
     echo json_encode($RequestResponse);
-
-

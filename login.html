@@ -26,23 +26,29 @@
                 </div>
             </form>
             
-			<div id="login-failed">
+			<div id="loginFailed">
 				O email/senha inserido(s) estão incorretos.
 			</div>
 
             <!-- Botões -->
             <div>
                 <!-- Entrar -->
+<<<<<<< HEAD
                 <a class="btn btn-primary" type="submit" role="button" href="restrito/cad_funcionario.html">Entrar</a>
+=======
+                <a class="btn btn-primary" id="entrarButton" type="submit" role="button">Entrar</a>
+>>>>>>> 181f866ece63559ea6333b7d9dca36ebb37ecd55
 
                 <!-- Voltar -->
                 <a class="btn btn-danger" href="index.html" role="button">Cancelar</a>
+                
+                <a href="restrito/cad_funcionario.html"> Ir para parte restrita.</a>
             </div>
         </main>
     </div>
 
-	<script src="/js/doLogin.js"></script>
-    <script src="/js/bootstrap.js"></script>
+	<script src="./js/doLogin.js"></script>
+    <script src="./js/bootstrap.js"></script>
     <script>
         window.addEventListener("DOMContentLoaded", iniciaPagina);
 
@@ -50,8 +56,13 @@
             /*Chama função para adicionar Bootstrap*/
             adicionaBootstrap();
         }
+<<<<<<< HEAD
         /*
         const button = document.querySelector(".btn-primary");
+=======
+        
+        const button = document.querySelector("#entrarButton");
+>>>>>>> 181f866ece63559ea6333b7d9dca36ebb37ecd55
 		button.onclick = () => {
 			DoLogin();
 		};
