@@ -10,14 +10,19 @@ exitWhenNotLogged($pdo);
 $email = $_SESSION["email"];
 
 try{
+    
     $sql = <<<SQL
-    SELECT * FROM agenda INNER JOIN pessoa
-    WHERE agenda.id_medico = pessoa.id_pessoa and pessoa.email = email
+    SELECT 
+        agenda.dia as dia, 
+        agenda.horario as horario, 
+        agenda.nome as paciente,
+        pessoa.sexo as sexo, 
+        pessoa.id_pessoa  
+    FROM agenda INNER JOIN pessoa
+    WHERE agenda.id_medico = pessoa.id_pessoa 
+    AND pessoa.email = $email
     SQL;
 
-    //Não será necessário usar prepare statements nesse caso
-    //Já que nenhum parâmetro preenchido pelo usuário é usado na Query
-    //Como há dados a serem processados usaremos o método query
     $stmt = $pdo->query($sql);
 }
 catch(Exception $e){
@@ -73,43 +78,43 @@ catch(Exception $e){
     <div class="container">
         <main>
             <h2>Listar Agendamentos</h2>
-            <table class="tabela">
-                <tr class="tabela_head">
-                    <th>#</th>
-                    <th>Data</th>
-                    <th>Horário</th>
-                    <th>Nome</th>
-                    <th>Sexo</th>
-                    <th>Email</th>
-                </tr>
-                <?php
-                while($row = $stmt->fetch()){
+            <table class="table table-striped">
+                <thead>
+                    <tr class="table-info">
+                        <th>#</th>
+                        <th>Data</th>
+                        <th>Horário</th>
+                        <th>Paciente</th>
+                        <th>Sexo</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-                    //Prevenção de ataques XSS
-                    $id_agenda = $row["id_agenda"];
-                    $dia = htmlspecialchars($row["dia"]);
-                    $horario = htmlspecialchars($row["horario"]);
-                    $nome = htmlspecialchars($row["nome"]);
-                    $sexo = htmlspecialchars($row["sexo"]);
-                    $email = htmlspecialchars($row["email"]);
-
-                    echo <<<HTML
-                        <tr>
-                            <th>
-                                <a href="EXC_agendamento.php?id_agenda=$id_agenda">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
-                                <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
-                                </svg></a>
-                            </th>
-                            <th>$dia</th>
-                            <th>$horario</th>
-                            <th>$nome</th>
-                            <th>$sexo</th>
-                            <th>$email</th>
-                        </tr>
-                    HTML;
-                }
-            ?>
+                    <?php
+                    while($row = $stmt->fetch()){
+                        $id_agenda = $row["id_agenda"];
+                        $dia = htmlspecialchars($row["dia"]);
+                        $horario = htmlspecialchars($row["horario"]);
+                        $paciente = htmlspecialchars($row["paciente"]);
+                        $sexo = htmlspecialchars($row["sexo"]);
+                        
+                        echo <<<HTML
+                            <tr>
+                                <td class="table-light">
+                                    <a href="EXC_agendamento.php?id_agenda=$id_agenda">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                                        <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+                                    </svg></a>
+                                </td>
+                                <td>$dia</td>
+                                <td>$horario</td>
+                                <td>$paciente</td>
+                                <td>$sexo</td>
+                            </tr>
+                        HTML;
+                    }
+                    ?>
+                </tbody>
             </table>
 
         </main>
