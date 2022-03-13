@@ -19,7 +19,7 @@ function DoLogin() {
 			if (RequestResponse.success)
 				window.location = RequestResponse.destination;
 			else
-				document.querySelector("#login-failed").style.display = 'block';
+				document.querySelector("#loginFailed").style.display = 'block';
 		})
 
 		.catch(error => {
