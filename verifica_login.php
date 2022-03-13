@@ -20,7 +20,7 @@
 
     $sql = <<<SQL
         SELECT email, senhaHash FROM funcionario INNER JOIN pessoa
-        WHERE funcionario.id funcionario = pessoa.id pessoa and email = ?
+        WHERE funcionario.id_funcionario = pessoa.id_pessoa and email = ?
         SQL;
 
     $stmt = $pdo->prepare($sql);
