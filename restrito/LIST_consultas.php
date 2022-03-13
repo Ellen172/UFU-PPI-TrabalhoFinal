@@ -1,31 +1,37 @@
 <?php
 
 require "../conexaoMysql.php";
-$pdo = mysqlConnect();
+session_start();
 
-try {
+$pdo = mysqlConnect();
+$email = $_SESSION["email"];
+
+try{
     $sql = <<<SQL
-    SELECT * FROM paciente INNER JOIN pessoa
-    WHERE paciente.id_paciente = pessoa.id_pessoa
+    SELECT * FROM agenda INNER JOIN pessoa
+    WHERE agenda.id_medico = pessoa.id_pessoa and pessoa.email = email
     SQL;
 
+    //Não será necessário usar prepare statements nesse caso
+    //Já que nenhum parâmetro preenchido pelo usuário é usado na Query
+    //Como há dados a serem processados usaremos o método query
     $stmt = $pdo->query($sql);
-} 
-catch (Exception $e) {
-    exit('Ocorreu uma falha: ' . $e->getMessage());
 }
-?>
+catch(Exception $e){
+    exit("Ocorreu uma falha: " . $e->getMessage());
+}
 
+?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Página Listagem de Pacientes">
+    <meta name="description" content="Página Listagem Minhas Consultas">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/style_restrito.css">
-    <title>Lista de Pacientes</title>
+    <title>Lista Minhas Consultas</title>
 </head>
 
 <body>
@@ -38,7 +44,7 @@ catch (Exception $e) {
     <!--Menu de naveção, com links para todas as páginas-->
     <div class="dropdown">
         <button class="btn btnNav dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
+            aria-haspopup="true" aria-expanded="false">
             Cadastrar
         </button>
         <div class="dropdown-menu">
@@ -52,9 +58,9 @@ catch (Exception $e) {
         </button>
         <div class="dropdown-menu">
             <a class="dropdown-item" href="LIST_funcionario.php">Listar Funcionarios</a>
-            <a class="dropdown-item" id="currently-active-tab" href="LIST_paciente.php">Listar Pacientes</a>
+            <a class="dropdown-item" href="LIST_paciente.php">Listar Pacientes</a>
             <a class="dropdown-item" href="LIST_endereco.php">Listar Endereços</a>
-            <a class="dropdown-item" href="LIST_agendamento.php">Agendamentos e Consultas dos Clientes</a>
+            <a class="dropdown-item" id="currently-active-tab" href="LIST_agendamento.php">Agendamentos e Consultas dos Clientes</a>
             <a class="dropdown-item" href="LIST_consultas.php">Meus Agendamentos e Consultas</a>
         </div>
 
@@ -63,66 +69,44 @@ catch (Exception $e) {
 
     <div class="container">
         <main>
-            <h2>Listar Pacientes</h2>
+            <h2>Listar Agendamentos</h2>
             <table class="tabela">
                 <tr class="tabela_head">
-                    <th scope="col">#</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Sexo</th>
-                    <th scope="col">E-mail</th>
-                    <th scope="col">Telefone</th>
-                    <th scope="col">CEP</th>
-                    <th scope="col">Logradouro</th>
-                    <th scope="col">Cidade</th>
-                    <th scope="col">Estado</th>
-                    <th scope="col">Peso</th>
-                    <th scope="col">Altura</th>
-                    <th scope="col">Tipo Sanguíneo</th>
+                    <th>#</th>
+                    <th>Data</th>
+                    <th>Horário</th>
+                    <th>Nome</th>
+                    <th>Sexo</th>
+                    <th>Email</th>
                 </tr>
                 <?php
-                    while ($row = $stmt->fetch()) {
-                        $id_pessoa = $row['id_pessoa'];
-                        $nome = $row['nome'];
-                        if($row['sexo']=='m'){
-                            $sexo='Masculino';
-                        } else if($row['sexo']=='f'){
-                            $sexo='Feminino';
-                        } else {
-                            $sexo='Outro';
-                        }
-                        $email = $row['email'];
-                        $telefone = $row['telefone'];
-                        $cep = $row['cep'];
-                        $logradouro = $row['logradouro'];
-                        $cidade = $row['cidade'];
-                        $estado = $row['estado'];
-                        $peso = $row['peso'];
-                        $altura = $row['altura'];
-                        $tipoSanguineo = $row['tipoSanguineo'];
+                while($row = $stmt->fetch()){
 
-                        echo <<<HTML
+                    //Prevenção de ataques XSS
+                    $id_agenda = $row["id_agenda"];
+                    $dia = htmlspecialchars($row["dia"]);
+                    $horario = htmlspecialchars($row["horario"]);
+                    $nome = htmlspecialchars($row["nome"]);
+                    $sexo = htmlspecialchars($row["sexo"]);
+                    $email = htmlspecialchars($row["email"]);
+
+                    echo <<<HTML
                         <tr>
                             <th>
-                                <a href="EXC_pessoa.php?id_pessoa=$id_pessoa">
+                                <a href="EXC_agendamento.php?id_agenda=$id_agenda">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
                                 <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
                                 </svg></a>
                             </th>
+                            <th>$dia</th>
+                            <th>$horario</th>
                             <th>$nome</th>
                             <th>$sexo</th>
                             <th>$email</th>
-                            <th>$telefone</th>
-                            <th>$cep</th>
-                            <th>$logradouro</th>
-                            <th>$cidade</th>
-                            <th>$estado</th>
-                            <th>$peso</th>
-                            <th>$altura</th>
-                            <th>$tipoSanguineo</th>
-                        </tr>      
-                        HTML;
-                    }
-                ?>
+                        </tr>
+                    HTML;
+                }
+            ?>
             </table>
 
         </main>
@@ -142,6 +126,8 @@ catch (Exception $e) {
             adicionaBootstrap();
         }
     </script>
+
 </body>
+
 
 </html>

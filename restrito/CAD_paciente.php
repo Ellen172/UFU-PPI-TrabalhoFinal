@@ -39,7 +39,7 @@ try {
         throw new Exception('Falha no cadastro de paciente');
 
     $pdo->commit();
-    header("location: cad_paciente.html");
+    header("location: cadastrados.html");
     exit();
 }
 catch (Exception $e) {

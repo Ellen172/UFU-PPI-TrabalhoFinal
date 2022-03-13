@@ -81,3 +81,7 @@ blockquote {
     font-style: italic;
     text-indent: 0.7rem;
 }
+
+.notificacao{
+    text-align: center;
+}

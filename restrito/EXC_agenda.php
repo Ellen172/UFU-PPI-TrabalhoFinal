@@ -2,13 +2,13 @@
 require "../conexaoMysql.php";
 $pdo = mysqlConnect();
 
-$id_endereco = $_GET["id_endereco"] ?? "";
+$id_agenda = $_GET["id_agenda"] ?? "";
 
 try {
 
   $sql = <<<SQL
-  DELETE FROM endereco
-  WHERE id_endereco = ?
+  DELETE FROM agenda
+  WHERE id_agenda = ?
   LIMIT 1
   SQL;
 
@@ -16,7 +16,7 @@ try {
   // ataques do tipo SQL Injection, pois a declaração
   // SQL contem um parâmetro (cpf) vindo da URL
   $stmt = $pdo->prepare($sql);
-  $stmt->execute([$id_endereco]);
+  $stmt->execute([$id_agenda]);
 
   header("location: excluidos.html");
   exit();

@@ -53,7 +53,7 @@
         }
 
         $pdo->commit();
-        header("location: cad_funcionario.html");
+        header("location: cadastrados.html");
         exit();
     }
 

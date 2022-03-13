@@ -58,7 +58,7 @@ catch(Exception $e){
             <a class="dropdown-item" href="LIST_paciente.php">Listar Pacientes</a>
             <a class="dropdown-item" id="currently-active-tab" href="LIST_endereco.php">Listar Endereços</a>
             <a class="dropdown-item" href="LIST_agendamento.php">Agendamentos e Consultas dos Clientes</a>
-            <a class="dropdown-item" href="lista_consultas.html">Meus Agendamentos e Consultas</a>
+            <a class="dropdown-item" href="LIST_consultas.php">Meus Agendamentos e Consultas</a>
         </div>
 
         <a class="btn btnNav" href="../index.html">Logout</a>
