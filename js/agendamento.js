@@ -7,7 +7,7 @@ function removeAllChildNodes(parent) {
     parent.appendChild(selecione);
 }
 
-function selectMedico(especialidade){
+function addOptionsSelectMedico(especialidade){
     let selectMedico = document.getElementById('medico');
     fetch('selectMedico.php?especialidade='+especialidade)
         .then(response => {
@@ -19,8 +19,8 @@ function selectMedico(especialidade){
             removeAllChildNodes(selectMedico);
             response.forEach(medico => {
                 const option = document.createElement('option');
-                option.text = `${medico.nome} - ${medico.telefone}`;
-                option.value = medico.nome;
+                option.text = medico;
+                option.value = medico;
                 selectMedico.appendChild(option);
             })
         })
