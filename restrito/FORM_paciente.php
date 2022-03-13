@@ -34,8 +34,8 @@ exitWhenNotLogged($pdo);
             Cadastrar
         </button>
         <div class="dropdown-menu">
-            <a class="dropdown-item" href="cad_funcionario.html">Novo Funcionario</a>
-            <a class="dropdown-item" id="currently-active-tab" href="cad_paciente.html">Novo Paciente</a>
+            <a class="dropdown-item" id="currently-active-tab" href="FORM_funcionario.php">Novo Funcionario</a>
+            <a class="dropdown-item" href="FORM_paciente.php">Novo Paciente</a>
         </div>
 
         <button class="btn btnNav dropdown-toggle" type="button" data-bs-toggle="dropdown"
