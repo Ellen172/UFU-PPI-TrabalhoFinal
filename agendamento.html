@@ -32,7 +32,7 @@
                     <div class="row m-3 g-3">
                         <div class="col-sm-4">
                             <label for="especialidade" class="form-label">Especialidade: </label>
-                            <select id="especialidade" name="especialidade" class="form-select" onchange = adicionaMedico(this.value)>
+                            <select id="especialidade" name="especialidade" class="form-select" onchange=adicionaMedico(this.value)>
                                 <option value="">Selecione..</option>
                             </select>
                         </div>
@@ -109,22 +109,9 @@
             fetch("medico.php")
             .then(response => {
             if (!response.ok) {
-                // A requisição finalizou com sucesso a nível de rede,
-                // porém o servidor retornou um código de status
-                // fora da faixa 200-299 (indicando outros possíveis erros).
-                // Neste caso, lança uma exceção para que a promise seja
-                // rejeitada. Como o próximo 'then' não possui callback 
-                // de erros, será executada a função do próximo 'catch'.
                 throw new Error(response.status);
-                // return Promise.reject(response.status);
             }
 
-            // Requisição finalizada com sucesso e o servidor
-            // retornou um código de status de sucesso (200-299). 
-            // O método json() faz a leitura dos dados de forma 
-            // assíncrona e converte para um objeto JS. Qdo essa 
-            // operação finalizar com sucesso, a função de callback
-            // do próximo then receberá o resultado e será executada.
             return response.json();
             })
             .then(especialidades => {
@@ -140,17 +127,16 @@
                 }
             })
             .catch(error => {
-            // Ocorreu um erro na comunicação com o servidor ou
-            // no processamento da requisição no PHP, que pode não
-            // ter retornado uma string JSON válida.
-            inputEspecialidade.reset();
-            console.error('Falha inesperada: ' + error);
+
+				inputEspecialidade.reset();
+				console.error('Falha inesperada: ' + error);
             });
         }
         
         //Adiciona Medico
         function adicionaMedico(valor){
             let inputMedico = document.querySelector("#medico");
+            inputMedico.removeAllChildNodes();
             for(let dados of medicos){
                 if(dados.especialidade == valor){
                     var option = document.createElement("option");
@@ -203,11 +189,7 @@
                 }
             })
             .catch(error => {
-            // Ocorreu um erro na comunicação com o servidor ou
-            // no processamento da requisição no PHP, que pode não
-            // ter retornado uma string JSON válida.
-            //inputHorario.reset();
-            console.error('Falha inesperada: ' + error);
+				console.error('Falha inesperada: ' + error);
             });
         }
 
