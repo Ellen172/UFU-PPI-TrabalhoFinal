@@ -3,10 +3,25 @@
 require "../conexaoMysql.php";
 $pdo = mysqlConnect();
 
+$sql = <<<SQL
+SELECT medico. FROM agenda  
+INNER JOIN medico 
+ON agenda.id_medico = medico.id_medico
+INNER JOIN pessoa
+ON medico.id_medico = pessoa.id_pessoa
+SQL;
+
 try{
     $sql = <<<SQL
-    SELECT * FROM agenda INNER JOIN medico
-    WHERE agenda.id_medico = medico.id_medico
+    SELECT 
+    data, 
+    horario, 
+    nome as medico  
+    FROM agenda 
+    INNER JOIN medico
+    ON agenda.id_medico = medico.id_medico
+    INNER JOIN pessoa
+    ON medico.id_medico = pessoa.id_pessoa
     SQL;
 
     //Não será necessário usar prepare statements nesse caso

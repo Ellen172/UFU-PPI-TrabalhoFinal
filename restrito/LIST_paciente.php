@@ -25,7 +25,6 @@ catch (Exception $e) {
     <meta name="description" content="Página Listagem de Pacientes">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/style_restrito.css">
-    <link rel="stylesheet" href="../css/style_listagem.css">
     <title>Lista de Pacientes</title>
 </head>
 
