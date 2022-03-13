@@ -1,12 +1,15 @@
 <?php
 
 require "../conexaoMysql.php";
+session_start();
+
 $pdo = mysqlConnect();
+$email = $_SESSION["email"];
 
 try{
     $sql = <<<SQL
-    SELECT * FROM funcionario INNER JOIN pessoa
-    WHERE funcionario.id_funcionario = pessoa.id_pessoa
+    SELECT * FROM agenda INNER JOIN pessoa
+    WHERE agenda.id_medico = pessoa.id_pessoa and pessoa.email = email
     SQL;
 
     //Não será necessário usar prepare statements nesse caso
@@ -25,10 +28,10 @@ catch(Exception $e){
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Página Listagem de Funcionários">
+    <meta name="description" content="Página Listagem Minhas Consultas">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/style_restrito.css">
-    <title>Lista de Funcionários</title>
+    <title>Lista Minhas Consultas</title>
 </head>
 
 <body>
@@ -54,10 +57,10 @@ catch(Exception $e){
             Listar
         </button>
         <div class="dropdown-menu">
-            <a class="dropdown-item" id="currently-active-tab" href="LIST_funcionario.php">Listar Funcionarios</a>
+            <a class="dropdown-item" href="LIST_funcionario.php">Listar Funcionarios</a>
             <a class="dropdown-item" href="LIST_paciente.php">Listar Pacientes</a>
             <a class="dropdown-item" href="LIST_endereco.php">Listar Endereços</a>
-            <a class="dropdown-item" href="LIST_agendamento.php">Agendamentos e Consultas dos Clientes</a>
+            <a class="dropdown-item" id="currently-active-tab" href="LIST_agendamento.php">Agendamentos e Consultas dos Clientes</a>
             <a class="dropdown-item" href="LIST_consultas.php">Meus Agendamentos e Consultas</a>
         </div>
 
@@ -66,42 +69,40 @@ catch(Exception $e){
 
     <div class="container">
         <main>
-            <h2>Listar Funcionários</h2>
+            <h2>Listar Agendamentos</h2>
             <table class="tabela">
                 <tr class="tabela_head">
                     <th>#</th>
+                    <th>Data</th>
+                    <th>Horário</th>
                     <th>Nome</th>
                     <th>Sexo</th>
-                    <th>E-mail</th>
-                    <th>Telefone</th>
-                    <th>Endereço</th>
-                    <th>Data Contrato</th>
-                    <th>Salário</th>
+                    <th>Email</th>
                 </tr>
                 <?php
                 while($row = $stmt->fetch()){
 
                     //Prevenção de ataques XSS
-                    $id_pessoa = $row["id_pessoa"];
+                    $id_agenda = $row["id_agenda"];
+                    $dia = htmlspecialchars($row["dia"]);
+                    $horario = htmlspecialchars($row["horario"]);
                     $nome = htmlspecialchars($row["nome"]);
                     $sexo = htmlspecialchars($row["sexo"]);
                     $email = htmlspecialchars($row["email"]);
-                    $data_contrato = htmlspecialchars($row["data_contrato"]);
-                    $salario = htmlspecialchars($row["salario"]);
 
                     echo <<<HTML
                         <tr>
                             <th>
-                                <a href="EXC_pessoa.php?id_pessoa=$id_pessoa">
+                                <a href="EXC_agendamento.php?id_agenda=$id_agenda">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
                                 <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
                                 </svg></a>
                             </th>
+                            <th>$dia</th>
+                            <th>$horario</th>
                             <th>$nome</th>
-                            <th>
+                            <th>$sexo</th>
                             <th>$email</th>
-                            <th>$data_contrato</th>
-                            <th>$salario</th>
                         </tr>
                     HTML;
                 }

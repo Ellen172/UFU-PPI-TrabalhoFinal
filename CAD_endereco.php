@@ -22,7 +22,7 @@ try{
     $stmt->execute([
         $cep, $logradouro, $cidade, $estado
     ]);
-    header("location: cad_endereco.html");
+    header("location: notificacao.html");
     exit(); 
 }
 catch(Exception $e){

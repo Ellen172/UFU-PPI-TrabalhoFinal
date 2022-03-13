@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Página Home">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Home</title>
+</head>
+
+<body>
+    <!-- Cabeçalho principal, presente em todas as páginas-->
+    <header>
+        <img src="./imagens/logotype.png" alt="logotipo da Clínica Aquae Vitae">
+        <h1>Clínica Aquae Vitae</h1>
+    </header>
+
+    <!--Menu de naveção, com links para todas as páginas-->
+    <nav>
+        <a href="./index.html">Home</a>
+        <a href="./galeria.html">Galeria</a>
+        <a href="./agendamento.html">Agendamento</a>
+        <a href="./cad_endereco.html">Novo Endereço</a>
+        <a href="./login.html">Login</a>
+    </nav>
+
+    <div class="container">
+        <main>
+            <h2 class="notificacao">Dados Cadastrados com Sucesso!</h2>
+        </main>
+    </div>
+
+    <!--Rodapé-->
+    <footer>
+        © Copyright 2021. Todos os direitos reservados.
+    </footer>
+
+    <script src="./js/bootstrap.js"></script>
+    <script>
+        window.addEventListener("DOMContentLoaded", iniciaPagina);
+
+        function iniciaPagina() {
+            /*Chama função para adicionar Bootstrap*/
+            adicionaBootstrap();
+        }
+    </script>
+</body>
+
+
+</html>

@@ -1,10 +1,10 @@
 /*Se houver algum schema de clinica ele será deletado*/
-DROP SCHEMA clinica CASCADE;
+/*DROP SCHEMA clinica CASCADE;*/
 /*Criamos o schema*/
-CREATE SCHEMA clinica;
-SET search_path TO clinica;
+/*CREATE SCHEMA clinica;*/
+/*SET search_path TO clinica;*/
 
---PESSOA
+/*PESSOA*/
 create table pessoa
 (
     /* CHAVE PRIMARIA */
@@ -22,7 +22,7 @@ create table pessoa
     primary key (id_pessoa)
 );
 
---FUNCIONARIO
+/*FUNCIONARIO*/
 create table funcionario
 (
     /* CHAVE PRIMARIA */
@@ -30,37 +30,31 @@ create table funcionario
     /* ATRIBUTOS */
     data_contrato date not null,
     salario decimal not null,
-    senhaHash varchar(100),
-    foreign key (id_funcionario) references pessoa(id_pessoa),
-    primary key (id_funcionario)
+    senhaHash varchar(100)
 );
 
---PACIENTE
+/*PACIENTE*/
 create table paciente
 (
     /* CHAVE PRIMARIA */
-    id_paciente int, 
+    id_paciente int not null, 
     /* ATRIBUTOS */
     peso decimal not null,
     altura decimal not null,
-    tipoSanguineo char(3),
-    primary key (id_paciente),
-    foreign key (id_paciente) references pessoa(id_pessoa)
+    tipoSanguineo char(3)
 );
 
---MEDICO
+/*MEDICO*/
 create table medico
 (
     /* CHAVE PRIMARIA */
-    id_medico int, 
+    id_medico int not null, 
     /* ATRIBUTOS */
     especialidade varchar(100) not null,
-    crm varchar(50),
-    primary key (id_medico),
-    foreign key (id_medico) references funcionario(id_funcionario)
+    crm varchar(50)
 );
 
---ENDERECO
+/*ENDERECO*/
 create table endereco
 (
     /* CHAVE PRIMARIA */
@@ -69,11 +63,10 @@ create table endereco
     cep char(10) not null,
     logradouro varchar(100),
     cidade varchar(50) not null,
-    estado char(2) not null,
-    primary key (id_endereco)
+    estado char(2) not null
 );
 
---AGENDA
+/*AGENDA*/
 create table agenda
 (
     /* CHAVE PRIMARIA */
@@ -82,11 +75,33 @@ create table agenda
     id_medico int not null,
     /* ATRIBUTOS */
     dia date not null,
-    horario time not null,
+    horario int not null,
     nome varchar(100) not null,
     sexo char not null,
-    email varchar(50),
-    primary key (id_agenda),
-    foreign key(id_medico) references medico(id_medico)
+    email varchar(50)
 );
 
+alter table pessoa
+   add constraint pessoa_pk primary key (id_pessoa);
+
+alter table funcionario
+   add constraint funcionario_pk primary key (id_funcionario),
+   add constraint funcionario_fk foreign key (id_funcionario) references pessoa(id_pessoa)
+   on delete cascade;
+
+alter table paciente
+    add constraint paciente_pk primary key (id_paciente),
+    add constraint paciente_fk foreign key (id_paciente) references pessoa(id_pessoa)
+    on delete cascade;
+
+alter table medico
+    add constraint medico_pk primary key (id_medico),
+    add constraint medico_fk foreign key (id_medico) references funcionario(id_funcionario)
+    on delete cascade;
+
+alter table endereco
+    add constraint endereco_pk primary key (id_endereco);
+
+alter table agenda
+    add constraint agenda_pk primary key (id_agenda),
+    add constraint medico_fk foreign key(id_medico) references medico(id_medico);
