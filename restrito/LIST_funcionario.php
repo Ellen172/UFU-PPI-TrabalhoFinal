@@ -67,47 +67,65 @@ catch(Exception $e){
     <div class="container">
         <main>
             <h2>Listar Funcionários</h2>
-            <table class="tabela">
-                <tr class="tabela_head">
-                    <th>#</th>
-                    <th>Nome</th>
-                    <th>Sexo</th>
-                    <th>E-mail</th>
-                    <th>Telefone</th>
-                    <th>Endereço</th>
-                    <th>Data Contrato</th>
-                    <th>Salário</th>
-                </tr>
-                <?php
-                while($row = $stmt->fetch()){
-
-                    //Prevenção de ataques XSS
-                    $id_pessoa = $row["id_pessoa"];
-                    $nome = htmlspecialchars($row["nome"]);
-                    $sexo = htmlspecialchars($row["sexo"]);
-                    $email = htmlspecialchars($row["email"]);
-                    $data_contrato = htmlspecialchars($row["data_contrato"]);
-                    $salario = htmlspecialchars($row["salario"]);
-
-                    echo <<<HTML
-                        <tr>
-                            <th>
-                                <a href="EXC_pessoa.php?id_pessoa=$id_pessoa">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
-                                <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
-                                </svg></a>
-                            </th>
-                            <th>$nome</th>
-                            <th>
-                            <th>$email</th>
-                            <th>$data_contrato</th>
-                            <th>$salario</th>
-                        </tr>
-                    HTML;
-                }
-            ?>
+            <table class="table table-striped">
+                <thead>
+                    <tr class="table-info">
+                        <th scope="col">#</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Sexo</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Telefone</th>
+                        <th scope="col">Endereço</th>
+                        <th scope="col">Data Contrato</th>
+                        <th scope="col">Salário</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        while($row = $stmt->fetch()){
+                            
+                            //Prevenção de ataques XSS
+                            $id_pessoa = $row["id_pessoa"];
+                            $nome = htmlspecialchars($row["nome"]);
+                            $sexo = htmlspecialchars($row["sexo"]);
+                            if($sexo=='m'){
+                                $sexo='Masculino';
+                            } else if($sexo=='f'){
+                                $sexo='Feminino';
+                            } else {
+                                $sexo='Outro';
+                            }
+                            $email = htmlspecialchars($row["email"]);
+                            $telefone = htmlspecialchars($row["telefone"]);
+                            $cep = htmlspecialchars($row["cep"]);
+                            $logradouro = htmlspecialchars($row["logradouro"]);
+                            $numero = htmlspecialchars($row["numero"]);
+                            $cidade = htmlspecialchars($row["cidade"]);
+                            $estado = htmlspecialchars($row["estado"]);
+                            $data_contrato = htmlspecialchars($row["data_contrato"]);
+                            $salario = htmlspecialchars($row["salario"]);
+                            
+                            echo <<<HTML
+                                <tr class="table-light">
+                                    <td>
+                                        <a href="EXC_pessoa.php?id_pessoa=$id_pessoa">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                                                <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+                                            </svg></a>
+                                    </td>
+                                    <td>$nome</td>
+                                    <td>$sexo</td>
+                                    <td>$email</td>
+                                    <td>$telefone</td>
+                                    <td>$cep <br> $logradouro, $numero <br> $cidade, $estado</td>
+                                    <td>$data_contrato</td>
+                                    <td>$salario</td>
+                                </tr>
+                            HTML;
+                        }
+                    ?>
+                </tbody>
             </table>
-
         </main>
     </div>
 
