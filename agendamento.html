@@ -19,7 +19,7 @@
     <nav>
         <a href="./index.html">Home</a>
         <a href="./galeria.html">Galeria</a>
-        <a id="currently-active-tab" href="./agendamento.php">Agendamento</a>
+        <a id="currently-active-tab" href="./agendamento.html">Agendamento</a>
         <a href="./cad_endereco.html">Novo Endereço</a>
         <a href="./login.html">Login</a>
     </nav>
@@ -46,7 +46,7 @@
                     <div class="row m-3 g-3">
                         <div class="col-sm-4">
                             <label for="data" class="form-label">Data: </label>
-                            <input type="date" id="data" name="data" class="form-control" onchange=adicionaHora(this)>
+                            <input type="date" id="data" name="data" class="form-control" onchange=adicionaHora(event)>
                         </div>
                         <div class="col-sm-8">
                             <label for="horario" class="form-label">Horário: </label>
@@ -151,6 +151,11 @@
         //Adiciona Medico
         function adicionaMedico(valor){
             let inputMedico = document.querySelector("#medico");
+            
+            while(inputMedico.firstChild){
+                inputMedico.removeChild(inputMedico.firstChild);
+            }
+
             for(let dados of medicos){
                 if(dados.especialidade == valor){
                     var option = document.createElement("option");
@@ -172,7 +177,9 @@
         }
 
         //Adiciona Hora
-        function adicionaHora(valor){
+        function adicionaHora(e){
+            let valor = e.target.value;
+
             fetch("agendamento.php?id_medico=" + selecionado.id_medico)
             .then(response => {
             if (!response.ok) {
@@ -188,9 +195,11 @@
                 let aux = 0;
                 
                 for(let dados of agenda){
-                    if(agenda.dia == valor)
-                        if(agenda.horario == cont[aux])
+                    if(dados.dia == valor){
+                        if(dados.horario == cont[aux]){
                             cont[aux] = 0;
+                        }
+                    }
                     aux++;
                 }
                 for(let i = 0; i< 10; i++){
