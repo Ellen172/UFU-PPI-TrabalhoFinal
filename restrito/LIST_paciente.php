@@ -71,10 +71,7 @@ catch (Exception $e) {
                     <th scope="col">Sexo</th>
                     <th scope="col">E-mail</th>
                     <th scope="col">Telefone</th>
-                    <th scope="col">CEP</th>
-                    <th scope="col">Logradouro</th>
-                    <th scope="col">Cidade</th>
-                    <th scope="col">Estado</th>
+                    <th scope="col">Endereço</th>
                     <th scope="col">Peso</th>
                     <th scope="col">Altura</th>
                     <th scope="col">Tipo Sanguíneo</th>
@@ -96,6 +93,7 @@ catch (Exception $e) {
                         $logradouro = $row['logradouro'];
                         $cidade = $row['cidade'];
                         $estado = $row['estado'];
+                        $numero = $row['numero'];
                         $peso = $row['peso'];
                         $altura = $row['altura'];
                         $tipoSanguineo = $row['tipoSanguineo'];
@@ -107,10 +105,7 @@ catch (Exception $e) {
                             <th>$sexo</th>
                             <th>$email</th>
                             <th>$telefone</th>
-                            <th>$cep</th>
-                            <th>$logradouro</th>
-                            <th>$cidade</th>
-                            <th>$estado</th>
+                            <th>$cep <br> $logradouro, $numero <br> $cidade, $estado</th>
                             <th>$peso</th>
                             <th>$altura</th>
                             <th>$tipoSanguineo</th>

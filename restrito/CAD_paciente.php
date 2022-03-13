@@ -11,6 +11,7 @@ $cep = $_POST["cep"] ?? "";
 $logradouro = $_POST["logradouro"] ?? "";
 $cidade = $_POST["cidade"] ?? "";
 $estado = $_POST["estado"] ?? "";
+$numero = $_POST["numero"] ?? "";
 $peso = $_POST["peso"] ?? "";
 $altura = $_POST["altura"] ?? "";
 $tipoSanguineo = $_POST["tipoSanguineo"] ?? "";
@@ -20,11 +21,11 @@ try {
 
     // inserir pessoa
     $sql1 = <<<SQL
-    INSERT INTO pessoa (nome, sexo, email, telefone, cep, logradouro, cidade, estado)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    INSERT INTO pessoa (nome, sexo, email, telefone, cep, logradouro, cidade, numero, estado)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
     SQL;
     $stmt = $pdo->prepare($sql1);
-    if(! $stmt->execute([$nome, $sexo, $email, $telefone, $cep, $logradouro, $cidade, $estado]))
+    if(! $stmt->execute([$nome, $sexo, $email, $telefone, $cep, $logradouro, $cidade, $numero, $estado]))
         throw new Exception('Falha no cadastro de pessoa');
 
     $id_pessoa = $pdo->lastInsertId();
