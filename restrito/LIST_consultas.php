@@ -64,7 +64,7 @@ catch(Exception $e){
             <a class="dropdown-item" href="LIST_consultas.php">Meus Agendamentos e Consultas</a>
         </div>
 
-        <a class="btn btnNav" href="../index.html">Logout</a>
+        <a class="btn btnNav" href="logout.php">Logout</a>
     </div>
 
     <div class="container">
