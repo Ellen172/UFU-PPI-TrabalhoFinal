@@ -137,6 +137,10 @@
         function adicionaMedico(valor){
             let inputMedico = document.querySelector("#medico");
             inputMedico.removeAllChildNodes();
+            var option = document.createElement("option");
+            option.text = "Selecione..";
+            option.value = "";
+            inputMedico.AppenChild(option);
             for(let dados of medicos){
                 if(dados.especialidade == valor){
                     var option = document.createElement("option");
