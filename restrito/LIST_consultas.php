@@ -1,9 +1,12 @@
 <?php
 
-require "../conexaoMysql.php";
-session_start();
+require_once "../conexaoMysql.php";
+require_once "../verifica_login.php";
 
+session_start();
 $pdo = mysqlConnect();
+exitWhenNotLogged($pdo);
+
 $email = $_SESSION["email"];
 
 try{

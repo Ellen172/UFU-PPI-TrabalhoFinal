@@ -33,3 +33,5 @@
 	  $enderecos[$cep] : new Endereco('', '', '');
 	  
 	echo json_encode($endereco);
+
+?>

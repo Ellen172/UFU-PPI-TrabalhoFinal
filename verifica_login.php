@@ -34,3 +34,4 @@
     $RequestResponse = new RequestResponse($IsSucess, "restrito/cad_funcionario.html");
 
     echo json_encode($RequestResponse);
+?>

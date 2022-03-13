@@ -1,3 +1,14 @@
+<?php
+
+require_once "../conexaoMysql.php";
+require_once "../verifica_login.php";
+
+session_start();
+$pdo = mysqlConnect();
+exitWhenNotLogged($pdo);
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -44,7 +55,7 @@
 
     <div class="container">
         <main>
-            <h2 class="notificacao">Dados Cadastrados com Sucesso!</h2>
+            <h2 class="notificacao">Dados Excluídos com Sucesso!</h2>
         </main>
     </div>
 

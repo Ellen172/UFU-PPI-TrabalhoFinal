@@ -47,3 +47,5 @@ catch (Exception $e) {
     $pdo->rollBack();
     exit('Falha na transação: ' . $e->getMessage());
 }
+
+?>

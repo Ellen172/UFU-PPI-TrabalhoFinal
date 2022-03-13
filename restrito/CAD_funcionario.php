@@ -61,3 +61,5 @@
         $pdo->rollBack();
         exit('Falha na transação: ' . $e->getMessage());
     }
+
+?>

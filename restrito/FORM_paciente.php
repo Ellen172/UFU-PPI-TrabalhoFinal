@@ -1,3 +1,14 @@
+<?php
+
+require_once "../conexaoMysql.php";
+require_once "../verifica_login.php";
+
+session_start();
+$pdo = mysqlConnect();
+exitWhenNotLogged($pdo);
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
