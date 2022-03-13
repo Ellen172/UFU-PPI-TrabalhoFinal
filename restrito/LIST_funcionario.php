@@ -71,7 +71,10 @@ catch(Exception $e){
                 <tr class="tabela_head">
                     <th>#</th>
                     <th>Nome</th>
+                    <th>Sexo</th>
                     <th>E-mail</th>
+                    <th>Telefone</th>
+                    <th>Endereço</th>
                     <th>Data Contrato</th>
                     <th>Salário</th>
                 </tr>
@@ -81,6 +84,7 @@ catch(Exception $e){
                     //Prevenção de ataques XSS
                     $id_funcionario = $row["id_funcionario"];
                     $nome = htmlspecialchars($row["nome"]);
+                    $sexo = htmlspecialchars($row["sexo"]);
                     $email = htmlspecialchars($row["email"]);
                     $data_contrato = htmlspecialchars($row["data_contrato"]);
                     $salario = htmlspecialchars($row["salario"]);
@@ -94,6 +98,7 @@ catch(Exception $e){
                                 </svg></a>
                             </th>
                             <th>$nome</th>
+                            <th>
                             <th>$email</th>
                             <th>$data_contrato</th>
                             <th>$salario</th>

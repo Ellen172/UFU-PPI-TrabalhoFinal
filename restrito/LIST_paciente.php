@@ -25,6 +25,7 @@ catch (Exception $e) {
     <meta name="description" content="Página Listagem de Pacientes">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/style_restrito.css">
+    <link rel="stylesheet" href="../css/style_listagem.css">
     <title>Lista de Pacientes</title>
 </head>
 
@@ -64,8 +65,8 @@ catch (Exception $e) {
     <div class="container">
         <main>
             <h2>Listar Pacientes</h2>
-            <table class="tabela">
-                <tr class="tabela_head">
+            <table class="table-light">
+                <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Sexo</th>
@@ -100,15 +101,15 @@ catch (Exception $e) {
 
                         echo <<<HTML
                         <tr>
-                            <th>$id_pessoa</th> 
-                            <th>$nome</th>
-                            <th>$sexo</th>
-                            <th>$email</th>
-                            <th>$telefone</th>
-                            <th>$cep <br> $logradouro, $numero <br> $cidade, $estado</th>
-                            <th>$peso</th>
-                            <th>$altura</th>
-                            <th>$tipoSanguineo</th>
+                            <td>$id_pessoa</td> 
+                            <td>$nome</td>
+                            <td>$sexo</td>
+                            <td>$email</td>
+                            <td>$telefone</td>
+                            <td>$cep <br> $logradouro, $numero <br> $cidade, $estado</td>
+                            <td>$peso</td>
+                            <td>$altura</td>
+                            <td>$tipoSanguineo</td>
                         </tr>      
                         HTML;
                     }
