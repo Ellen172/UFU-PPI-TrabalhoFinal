@@ -31,31 +31,26 @@
                     <legend class="subtitulo">Dados do Endereço</legend>
 
                     <div class="row m-3 g-3">
-                        <!--CEP, Cidade e Estado-->
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <label for="cep" class="form-label">CEP:</label>
                             <input type="text" id="cep" name="cep" pattern="\d{5}-\d{3}.*" placeholder="xxxxx-xxx"
                                 class="form-control" required>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <label for="cidade" class="form-label">Cidade:</label>
                             <input type="text" id="cidade" name="cidade" class="form-control" required>
                         </div>
+                    </div>
+                    <div class="row m-3 g-3">
                         <div class="col-md-4">
                             <label for="estado" class="form-label">Estado:</label>
                             <select id="estado" name="estado" class="form-select">
                                 <option value="">Selecione..</option>
                             </select>
                         </div>
-
-                        <!--Logradouro e Número-->
                         <div class="col-md-8">
                             <label for="logradouro" class="form-label">Logradouro: </label>
                             <input type="text" id="logradouro" name="logradouro" class="form-control" required>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="numero" class="form-label">Numero: </label>
-                            <input type="number" id="numero" name="numero" class="form-control">
                         </div>
                     </div>
                 </fieldset>
