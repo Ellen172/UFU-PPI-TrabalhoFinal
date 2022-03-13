@@ -30,8 +30,11 @@
 	$IsSucess = false;
 	
 	if(password_verify($senha, $row['senhaHash'])) $IsSucess = true;
+
+    $_SESSION['emailUsuario'] = $email;
+    $_SESSION['loginString'] = hash('sha512', $senhaHash . $_SERVER['HTTP_USER_AGENT']);  
     
-    $RequestResponse = new RequestResponse($IsSucess, "restrito/cad_funcionario.html");
+    $RequestResponse = new RequestResponse($IsSucess, "restrito/FORM_funcionario.php");
 
     echo json_encode($RequestResponse);
 ?>

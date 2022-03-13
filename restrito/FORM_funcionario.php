@@ -1,7 +1,7 @@
 <?php
 
 require_once "../conexaoMysql.php";
-require_once "../verifica_login.php";
+require_once "../autentificacao.php";
 
 session_start();
 $pdo = mysqlConnect();
