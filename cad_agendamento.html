@@ -140,6 +140,11 @@
             while(inputMedico.firstChild){
                 inputMedico.removeChild(inputMedico.firstChild);
             }
+            
+            var option = document.createElement("option");
+            option.text = "Selecione..";
+            option.value = "";
+            inputMedico.AppenChild(option);
 
             var option = document.createElement("option");
             option.text = "Selecione";
