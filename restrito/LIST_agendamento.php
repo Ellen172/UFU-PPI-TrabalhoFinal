@@ -3,21 +3,28 @@
 require "../conexaoMysql.php";
 $pdo = mysqlConnect();
 
-try{
+try {
+
     $sql = <<<SQL
-    SELECT * FROM agenda INNER JOIN medico
-    WHERE agenda.id_medico = medico.id_medico
+    SELECT 
+        agenda.dia as dia, 
+        agenda.horario as hora, 
+        agenda.nome as nome_paciente, 
+        medico.especialidade as especialidade, 
+        pessoa.nome as nome_medico
+    FROM agenda 
+    INNER JOIN medico
+    ON agenda.id_medico = medico.id_medico
+    INNER JOIN pessoa
+    ON medico.id_medico = pessoa.id_pessoa
     SQL;
 
-    //Não será necessário usar prepare statements nesse caso
-    //Já que nenhum parâmetro preenchido pelo usuário é usado na Query
-    //Como há dados a serem processados usaremos o método query
     $stmt = $pdo->query($sql);
+
 }
 catch(Exception $e){
-    exit("Ocorreu uma falha: " . $e->getMessage());
+    exit('Falha na transação: ' . $e->getMessage());
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -67,46 +74,50 @@ catch(Exception $e){
     <div class="container">
         <main>
             <h2>Listar Agendamentos</h2>
-            <table class="tabela">
-                <tr class="tabela_head">
-                    <th>#</th>
-                    <th>Data</th>
-                    <th>Horário</th>
-                    <th>Nome</th>
-                    <th>Sexo</th>
-                    <th>Email</th>
-                    <th>Médico</th>
-                </tr>
-                <?php
-                while($row = $stmt->fetch()){
+            <table class="table table-striped">
+                <thead>
+                    <tr class="table-info">
+                        <th>#</th>
+                        <th>Data</th>
+                        <th>Horário</th>
+                        <th>Paciente</th>
+                        <th>Médico</th>
+                        <th>Especialidade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
 
-                    //Prevenção de ataques XSS
-                    $id_agenda = $row["id_agenda"];
-                    $dia = htmlspecialchars($row["dia"]);
-                    $horario = htmlspecialchars($row["horario"]);
-                    $nome = htmlspecialchars($row["nome"]);
-                    $sexo = htmlspecialchars($row["sexo"]);
-                    $email = htmlspecialchars($row["email"]);
-                    $medico = htmlspecialchars($row["especialidade"]);
+                    while($row = $stmt->fetch()){
+                        $id_agenda = $row["id_agenda"];
+                        $dia = htmlspecialchars($row["dia"]);
+                        $horario = htmlspecialchars($row["hora"]);
+                        $nome_paciente = htmlspecialchars($row["nome_paciente"]);
+                        $especialidade = htmlspecialchars($row["especialidade"]);
+                        $nome_medico = htmlspecialchars($row["nome_medico"]);
+                        
+                        echo <<<HTML
+                            <tr class="table-light">
+                                <td>
+                                    <a href="EXC_agendamento.php?id_agenda=$id_agenda">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                                    <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+                                    </svg></a>
+                                </td>
+                                <td>$dia</td>
+                                <td>$horario</td>
+                                <td>$nome_paciente</td>
+                                <td>$nome_medico</td>
+                                <td>$especialidade</td>
+                            </tr>
+                            HTML;
+                    }
 
-                    echo <<<HTML
-                        <tr>
-                            <th>
-                                <a href="EXC_agendamento.php?id_agenda=$id_agenda">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
-                                <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
-                                </svg></a>
-                            </th>
-                            <th>$dia</th>
-                            <th>$horario</th>
-                            <th>$nome</th>
-                            <th>$sexo</th>
-                            <th>$email</th>
-                            <th>$medico</th>
-                        </tr>
-                    HTML;
-                }
-            ?>
+                    
+
+                    
+                    ?>
+                </tbody>
             </table>
 
         </main>
