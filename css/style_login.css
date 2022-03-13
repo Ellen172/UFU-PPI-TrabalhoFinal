@@ -40,7 +40,7 @@ main>h2 {
     margin-bottom: 2rem;
 }
 
-.loginFailed {
+#login-failed {
 	background-color: red;
 	color: azure;
 	text-align: center;
