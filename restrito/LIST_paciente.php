@@ -82,25 +82,26 @@ catch (Exception $e) {
 
                     <?php
                     while ($row = $stmt->fetch()) {
-                        $id_pessoa = $row['id_pessoa'];
-                        $nome = $row['nome'];
-                        if($row['sexo']=='m'){
+                        $id_pessoa = htmlspecialchars($row['id_pessoa']);
+                        $nome = htmlspecialchars($row['nome']);
+                        $sexo = $row['sexo'];
+                        if($rsexo=='m'){
                             $sexo='Masculino';
-                        } else if($row['sexo']=='f'){
+                        } else if($sexo=='f'){
                             $sexo='Feminino';
                         } else {
                             $sexo='Outro';
                         }
-                        $email = $row['email'];
-                        $telefone = $row['telefone'];
-                        $cep = $row['cep'];
-                        $logradouro = $row['logradouro'];
-                        $cidade = $row['cidade'];
-                        $estado = $row['estado'];
-                        $numero = $row['numero'];
-                        $peso = $row['peso'];
-                        $altura = $row['altura'];
-                        $tipoSanguineo = $row['tipoSanguineo'];
+                        $email = htmlspecialchars($row['email']);
+                        $telefone = htmlspecialchars($row['telefone']);
+                        $cep = htmlspecialchars($row['cep']);
+                        $logradouro = htmlspecialchars($row['logradouro']);
+                        $cidade = htmlspecialchars($row['cidade']);
+                        $estado = htmlspecialchars($row['estado']);
+                        $numero = htmlspecialchars($row['numero']);
+                        $peso = htmlspecialchars($row['peso']);
+                        $altura = htmlspecialchars($row['altura']);
+                        $tipoSanguineo = htmlspecialchars($row['tipoSanguineo']);
                         
                         echo <<<HTML
                         <tr class="table-light">
