@@ -18,7 +18,7 @@ try {
   $stmt = $pdo->prepare($sql);
   $stmt->execute([$id_pessoa]);
 
-  header("location: excluidos.html");
+  header("location: excluidos.php");
   exit();
 } 
 catch (Exception $e) {  

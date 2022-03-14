@@ -1,13 +1,13 @@
 <?php
 
 require_once "../conexaoMysql.php";
-require_once "../verifica_login.php";
+require_once "../autentificacao.php";
 
 session_start();
 $pdo = mysqlConnect();
 exitWhenNotLogged($pdo);
 
-$email = $_SESSION["email"];
+$email = $_SESSION["emailUsuario"];
 
 try{
     
@@ -18,9 +18,10 @@ try{
         agenda.nome as paciente,
         pessoa.sexo as sexo, 
         pessoa.id_pessoa  
-    FROM agenda INNER JOIN pessoa
-    WHERE agenda.id_medico = pessoa.id_pessoa 
-    AND pessoa.email = $email
+    FROM agenda 
+    INNER JOIN pessoa
+    ON agenda.id_medico = pessoa.id_pessoa 
+    AND pessoa.email = "{$email}"
     SQL;
 
     $stmt = $pdo->query($sql);
@@ -56,7 +57,7 @@ catch(Exception $e){
             Cadastrar
         </button>
         <div class="dropdown-menu">
-            <a class="dropdown-item" id="currently-active-tab" href="FORM_funcionario.php">Novo Funcionario</a>
+            <a class="dropdown-item" href="FORM_funcionario.php">Novo Funcionario</a>
             <a class="dropdown-item" href="FORM_paciente.php">Novo Paciente</a>
         </div>
 
@@ -64,12 +65,11 @@ catch(Exception $e){
                 aria-haspopup="true" aria-expanded="false">
             Listar
         </button>
-        <div class="dropdown-menu">
+        <div class="dropdown-menu" id="listagem">
             <a class="dropdown-item" href="LIST_funcionario.php">Listar Funcionarios</a>
             <a class="dropdown-item" href="LIST_paciente.php">Listar Pacientes</a>
             <a class="dropdown-item" href="LIST_endereco.php">Listar Endereços</a>
-            <a class="dropdown-item" id="currently-active-tab" href="LIST_agendamento.php">Agendamentos e Consultas dos Clientes</a>
-            <a class="dropdown-item" href="LIST_consultas.php">Meus Agendamentos e Consultas</a>
+            <a class="dropdown-item" href="LIST_agendamento.php">Agendamentos e Consultas dos Clientes</a>
         </div>
 
         <a class="btn btnNav" href="logout.php">Logout</a>
@@ -99,8 +99,8 @@ catch(Exception $e){
                         $sexo = htmlspecialchars($row["sexo"]);
                         
                         echo <<<HTML
-                            <tr>
-                                <td class="table-light">
+                            <tr class="table-light">
+                                <td>
                                     <a href="EXC_agendamento.php?id_agenda=$id_agenda">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
                                         <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
@@ -126,12 +126,16 @@ catch(Exception $e){
     </footer>
 
     <script src="../js/bootstrap.js"></script>
+    <script src="../js/abaConsultas.js"></script>
     <script>
         window.addEventListener("DOMContentLoaded", iniciaPagina);
 
         function iniciaPagina() {
             /*Chama função para adicionar Bootstrap*/
             adicionaBootstrap();
+
+            /*Chama função adiciona aba Minhas Consultas*/
+            abaConsultas();
         }
     </script>
 

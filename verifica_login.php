@@ -1,5 +1,6 @@
 <?php
-    require "conexaoMysql.php";
+    require_once "conexaoMysql.php";
+    session_start();
     
     class RequestResponse
 	{
@@ -29,10 +30,15 @@
 	
 	$IsSucess = false;
 	
-	if(password_verify($senha, $row['senhaHash'])) $IsSucess = true;
+	if(password_verify($senha, $row['senhaHash'])){
+        $IsSucess = true;
 
-    $_SESSION['emailUsuario'] = $email;
-    $_SESSION['loginString'] = hash('sha512', $senhaHash . $_SERVER['HTTP_USER_AGENT']);  
+        // Armazena dados úteis para confirmação 
+        // de login em outros scripts PHP
+        $_SESSION['emailUsuario'] = $email;
+        $_SESSION['loginString'] = $senha;   
+
+    } 
     
     $RequestResponse = new RequestResponse($IsSucess, "restrito/FORM_funcionario.php");
 

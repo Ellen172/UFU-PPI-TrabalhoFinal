@@ -42,12 +42,11 @@ exitWhenNotLogged($pdo);
                 aria-haspopup="true" aria-expanded="false">
             Listar
         </button>
-        <div class="dropdown-menu">
+        <div class="dropdown-menu" id="listagem">
             <a class="dropdown-item" href="LIST_funcionario.php">Listar Funcionarios</a>
             <a class="dropdown-item" href="LIST_paciente.php">Listar Pacientes</a>
             <a class="dropdown-item" href="LIST_endereco.php">Listar Endereços</a>
             <a class="dropdown-item" href="LIST_agendamento.php">Agendamentos e Consultas dos Clientes</a>
-            <a class="dropdown-item" href="LIST_consultas.php">Meus Agendamentos e Consultas</a>
         </div>
 
         <a class="btn btnNav" href="logout.php">Logout</a>
@@ -150,13 +149,12 @@ exitWhenNotLogged($pdo);
                     <div class="row m-3 g-3">
                         <div class="col-md-6">
                             <label class="form-label" for="CRM">CRM: </label>
-                            <input class="form-control" type="number" id="CRM" name="CRM" placeholder="Informe o CRM"
-                                required>
+                            <input class="form-control" type="number" id="CRM" name="CRM" placeholder="Informe o CRM">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="especialidade">Especialidade: </label>
                             <input class="form-control" type="text" id="especialidade" name="especialidade"
-                                placeholder="Informe a especialidade" required>
+                                placeholder="Informe a especialidade">
                         </div>
                     </div>
                 </fieldset>
@@ -184,6 +182,7 @@ exitWhenNotLogged($pdo);
     <script src="../js/estados.js"></script>
     <script src="../js/buscaEndereco.js"></script>
     <script src="../js/cadastraMedico.js"></script>
+    <script src="../js/abaConsultas.js"></script>
     <script>
         window.addEventListener("DOMContentLoaded", iniciaPagina);
 
@@ -201,6 +200,9 @@ exitWhenNotLogged($pdo);
 
             /*Chama a função para cadastro de medico*/
             cadastraMedico();
+
+            /*Chama função adiciona aba Minhas Consultas*/
+            abaConsultas();
         }
 
     </script>

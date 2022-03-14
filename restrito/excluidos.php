@@ -1,7 +1,7 @@
 <?php
 
 require_once "../conexaoMysql.php";
-require_once "../verifica_login.php";
+require_once "../autentificacao.php";
 
 session_start();
 $pdo = mysqlConnect();
@@ -34,7 +34,7 @@ exitWhenNotLogged($pdo);
             Cadastrar
         </button>
         <div class="dropdown-menu">
-            <a class="dropdown-item" id="currently-active-tab" href="FORM_funcionario.php">Novo Funcionario</a>
+            <a class="dropdown-item" href="FORM_funcionario.php">Novo Funcionario</a>
             <a class="dropdown-item" href="FORM_paciente.php">Novo Paciente</a>
         </div>
 

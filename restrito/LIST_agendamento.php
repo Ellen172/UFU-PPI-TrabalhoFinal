@@ -1,7 +1,7 @@
 <?php
 
 require_once "../conexaoMysql.php";
-require_once "../verifica_login.php";
+require_once "../autentificacao.php";
 
 session_start();
 $pdo = mysqlConnect();
@@ -56,7 +56,7 @@ catch(Exception $e){
             Cadastrar
         </button>
         <div class="dropdown-menu">
-            <a class="dropdown-item" id="currently-active-tab" href="FORM_funcionario.php">Novo Funcionario</a>
+            <a class="dropdown-item" href="FORM_funcionario.php">Novo Funcionario</a>
             <a class="dropdown-item" href="FORM_paciente.php">Novo Paciente</a>
         </div>
 
@@ -64,12 +64,11 @@ catch(Exception $e){
                 aria-haspopup="true" aria-expanded="false">
             Listar
         </button>
-        <div class="dropdown-menu">
+        <div class="dropdown-menu" id="listagem">
             <a class="dropdown-item" href="LIST_funcionario.php">Listar Funcionarios</a>
             <a class="dropdown-item" href="LIST_paciente.php">Listar Pacientes</a>
             <a class="dropdown-item" href="LIST_endereco.php">Listar Endereços</a>
             <a class="dropdown-item" id="currently-active-tab" href="LIST_agendamento.php">Agendamentos e Consultas dos Clientes</a>
-            <a class="dropdown-item" href="LIST_consultas.php">Meus Agendamentos e Consultas</a>
         </div>
 
         <a class="btn btnNav" href="logout.php">Logout</a>
@@ -133,12 +132,16 @@ catch(Exception $e){
     </footer>
 
     <script src="../js/bootstrap.js"></script>
+    <script src="../js/abaConsultas.js"></script>
     <script>
         window.addEventListener("DOMContentLoaded", iniciaPagina);
 
         function iniciaPagina() {
             /*Chama função para adicionar Bootstrap*/
             adicionaBootstrap();
+
+            /*Chama função adiciona aba Minhas Consultas*/
+            abaConsultas();
         }
     </script>
 

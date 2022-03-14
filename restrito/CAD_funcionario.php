@@ -21,6 +21,15 @@
 
     try{
         $pdo->beginTransaction();
+
+        $sqlEndereco = <<<SQL
+            INSERT INTO endereco(cep, logradouro, cidade, estado)
+            VALUES (?, ?, ?, ?)
+        SQL;
+        $stmt = $pdo->prepare($sqlEndereco);
+        if(!$stmt->execute([$cep, $logradouro, $cidade, $estado]))
+            throw new Exception('Falha ao inserir na tabela endereco');
+
         $sqlPessoa = <<<SQL
             INSERT INTO pessoa (nome, sexo, email, telefone, cep, logradouro, cidade, estado)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)
@@ -53,7 +62,7 @@
         }
 
         $pdo->commit();
-        header("location: cadastrados.html");
+        header("location: cadastrados.php");
         exit();
     }
 

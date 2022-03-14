@@ -19,28 +19,37 @@ $tipoSanguineo = $_POST["tipoSanguineo"] ?? "";
 try {
     $pdo->beginTransaction();
 
-    // inserir pessoa
-    $sql1 = <<<SQL
-    INSERT INTO pessoa (nome, sexo, email, telefone, cep, logradouro, cidade, numero, estado)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+    // Inserir Endereco
+    $sqlEndereco = <<<SQL
+        INSERT INTO endereco(cep, logradouro, cidade, estado)
+        VALUES (?, ?, ?, ?)
     SQL;
-    $stmt = $pdo->prepare($sql1);
-    if(! $stmt->execute([$nome, $sexo, $email, $telefone, $cep, $logradouro, $cidade, $numero, $estado]))
-        throw new Exception('Falha no cadastro de pessoa');
+    $stmt = $pdo->prepare($sqlEndereco);
+    if(!$stmt->execute([$cep, $logradouro, $cidade, $estado]))
+        throw new Exception('Falha ao inserir na tabela endereco');
+
+    // Inserir Pessoa
+    $sqlPessoa = <<<SQL
+        INSERT INTO pessoa (nome, sexo, email, telefone, cep, logradouro, cidade, numero, estado)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+    SQL;
+    $stmt = $pdo->prepare($sqlPessoa);
+    if(!$stmt->execute([$nome, $sexo, $email, $telefone, $cep, $logradouro, $cidade, $numero, $estado]))
+        throw new Exception('Falha ao inserir na tabela pessoa');
 
     $id_pessoa = $pdo->lastInsertId();
     
-    // inserir paciente
-    $sql2 = <<<SQL
-    INSERT INTO paciente (id_paciente, peso, altura, tipoSanguineo)
-    VALUES (?, ?, ?, ?) 
+    // Inserir Paciente
+    $sqlPaciente = <<<SQL
+        INSERT INTO paciente (id_paciente, peso, altura, tipoSanguineo)
+        VALUES (?, ?, ?, ?) 
     SQL;
-    $stmt = $pdo->prepare($sql2);
+    $stmt = $pdo->prepare($sqlPaciente);
     if(! $stmt->execute([$id_pessoa, $peso, $altura, $tipoSanguineo]))
-        throw new Exception('Falha no cadastro de paciente');
+        throw new Exception('Falha ao inserir na tabela paciente');
 
     $pdo->commit();
-    header("location: cadastrados.html");
+    header("location: cadastrados.php");
     exit();
 }
 catch (Exception $e) {
