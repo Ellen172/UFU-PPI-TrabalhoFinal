@@ -11,6 +11,7 @@ function abaConsultas() {
 		.then(RequestResponse => {
 			if (RequestResponse.success) {
 				const a = document.createElement("a");
+				a.setAttribute("id", "currently-active-tab")
 				a.setAttribute("class", "dropdown-item");
 				a.setAttribute("href", "LIST_consultas.php");
 				a.textContent = "Meus Agendamentos e Consultas";

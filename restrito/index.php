@@ -47,7 +47,7 @@ exitWhenNotLogged($pdo);
 		}
 
 		.container {
-			margin: 80px 0px;
+			margin: 70px 0px;
 		}
 	</style>
 </head>
@@ -65,19 +65,19 @@ exitWhenNotLogged($pdo);
 			<div class="row">
 				<div class="col">
 					<div class="row mb-2">
-						<a href="FORM_funcionario.php">Novo Funcionaro</a>
+						<a href="FORM_funcionario.php">Novo Funcionario</a>
 					</div>
 					<div class="row mb-2">
 						<a href="FORM_paciente.php">Novo Paciente</a>
 					</div>
 					<div class="row mb-2">
-						<a href="LIST_funcionario.php">Listar Funcionaros</a>
+						<a href="LIST_funcionario.php">Listar Funcionarios</a>
 					</div>
 					<div class="row mb-2">
 						<a href="LIST_paciente.php">Listar Pacientes</a>
 					</div>
 					<div class="row mb-2">
-						<a href="LIST_endereco.php">Listasr Endereços</a>
+						<a href="LIST_endereco.php">Listar Endereços</a>
 					</div>
 					<div class="row mb-2" id="opcoes">
 						<a href="LIST_agendamento.php">Listar Agendamentos</a>
@@ -102,10 +102,10 @@ exitWhenNotLogged($pdo);
 
 		function iniciaPagina() {
 			/*Chama função para adicionar Bootstrap*/
-			adicionaBootstrap();
+				adicionaBootstrap();
 
 			/*Chama função adiciona aba Minhas Consultas*/
-            opcaoConsultas();
+        opcaoConsultas();
 		}
 	</script>
 </body>
