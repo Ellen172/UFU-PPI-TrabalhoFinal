@@ -52,7 +52,7 @@ catch(Exception $e){
 
     <!--Menu de naveção, com links para todas as páginas-->
     <div class="dropdown">
-        <a class="btn btnNav" href="index.html">Home</a>
+        <a class="btn btnNav" href="index.php">Home</a>
 
         <button class="btn btnNav dropdown-toggle" type="button" data-bs-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
@@ -79,7 +79,7 @@ catch(Exception $e){
 
     <div class="container">
         <main>
-            <h2>Listar Agendamentos</h2>
+            <h2>Listar Meus Agendamentos</h2>
             <table class="table table-striped">
                 <thead>
                     <tr class="table-info">

@@ -1,29 +1,43 @@
-function DoLogin() {
-	const meuForm = document.querySelector("form");
-	let formData = new FormData(meuForm);
+function enviaForm() {
 
-	const options = {
-		method: "POST",
-		body: formData
+	let xhr = new XMLHttpRequest();
+
+	// O formulário será enviado como um objeto FormData
+	// A requisição deve utilizar o método POST
+	xhr.open("POST", "verifica_login.php");
+	xhr.onload = function () {
+		// verifica o código de status retornado pelo servidor
+		if (xhr.status != 200) {
+			console.error("Falha inesperada: " + xhr.responseText);
+			return;
+		}
+
+		// converte a string JSON para objeto JS
+		try {
+			var response = JSON.parse(xhr.responseText);
+		}
+		catch (e) {
+			console.error("String JSON inválida: " + xhr.responseText);
+			return;
+		}
+
+		// utiliza os dados da resposta
+		if (response.success)
+			window.location = response.detail;
+		else {
+			document.querySelector("#loginFailed").style.display = 'block';
+			form.senha.value = "";
+			form.senha.focus();
+		}
 	}
 
-	fetch("verifica_login.php", options)
-		.then(response => {
-			if (!response.ok) {
-				throw new Error(response.status);
-			}
+	xhr.onerror = function () {
+		console.error("Erro de rede - requisição não finalizada");
+	};
 
-			return response.json();
-		})
-		.then(RequestResponse => {
-			if (RequestResponse.success)
-				window.location = RequestResponse.destination;
-			else
-				document.querySelector("#loginFailed").style.display = 'block';
-		})
-
-		.catch(error => {
-			meuForm.reset();
-			console.error('Falha inesperada: ' + error);
-		});
+	// envia o formulário de login utilizando a interface FormData
+	const form = document.querySelector("form");
+	xhr.send(new FormData(form));
 }
+
+

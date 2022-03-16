@@ -41,7 +41,7 @@ catch (Exception $e) {
 
     <!--Menu de naveção, com links para todas as páginas-->
     <div class="dropdown">
-        <a class="btn btnNav" href="index.html">Home</a>
+        <a class="btn btnNav" href="index.php">Home</a>
         
         <button class="btn btnNav dropdown-toggle" type="button" data-bs-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">

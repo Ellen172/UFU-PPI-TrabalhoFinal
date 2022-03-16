@@ -2,61 +2,61 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Login">
-    <link rel="stylesheet" href="./css/style_login.css">
-    <title>Login</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="Login">
+	<link rel="stylesheet" href="./css/style_login.css">
+	<title>Login</title>
 </head>
 
 <body>
-    <div class="container">
-        <main>
-            <h2>Login</h2>
-            <form>
-                <!-- Email -->
-                <div class="col form-floating mb-3">
-                    <input type="email" id="email" name="email" class="form-control" placeholder="E-mail" required>
-                    <label for="email">E-mail</label>
-                </div>
+	<div class="container">
+		<main>
+			<h2>Login</h2>
+			<form>
+				<!-- Email -->
+				<div class="col form-floating mb-3">
+					<input type="email" id="email" name="email" class="form-control" placeholder="E-mail" required>
+					<label for="email">E-mail</label>
+				</div>
 
-                <!-- Senha -->
-                <div class="col form-floating mb-3">
-                    <input type="password" id="senha" name="senha" class="form-control" placeholder="Senha" required>
-                    <label for="senha">Senha</label>
-                </div>
-            </form>
+				<!-- Senha -->
+				<div class="col form-floating mb-3">
+					<input type="password" id="senha" name="senha" class="form-control" placeholder="Senha" required>
+					<label for="senha">Senha</label>
+				</div>
+			</form>
 
 			<div id="loginFailed">
 				O email/senha inserido(s) estão incorretos.
 			</div>
 
-            <!-- Botões -->
-            <div>
-                <!-- Entrar -->
-                <a class="btn btn-primary" id="entrarButton" type="submit" role="button">Entrar</a>
+			<!-- Botões -->
+			<div>
+				<!-- Entrar -->
+				<a class="btn btn-primary" id="entrarButton" type="submit" role="button">Entrar</a>
 
-                <!-- Voltar -->
-                <a class="btn btn-danger" href="index.html" role="button">Cancelar</a>
-            </div>
-        </main>
-    </div>
+				<!-- Voltar -->
+				<a class="btn btn-danger" href="index.html" role="button">Cancelar</a>
+			</div>
+		</main>
+	</div>
 
 	<script src="./js/doLogin.js"></script>
-    <script src="./js/bootstrap.js"></script>
-    <script>
-        window.addEventListener("DOMContentLoaded", iniciaPagina);
+	<script src="./js/bootstrap.js"></script>
+	<script>
+		window.addEventListener("DOMContentLoaded", iniciaPagina);
 
-        function iniciaPagina() {
-            /*Chama função para adicionar Bootstrap*/
-            adicionaBootstrap();
-        }
+		function iniciaPagina() {
+			/*Chama função para adicionar Bootstrap*/
+			adicionaBootstrap();
+		}
 
-        const button = document.querySelector("#entrarButton");
+		const button = document.querySelector("#entrarButton");
 		button.onclick = () => {
-			DoLogin();
+			enviaForm();
 		};
 
-    </script>
+	</script>
 </body>
 
 </html>
