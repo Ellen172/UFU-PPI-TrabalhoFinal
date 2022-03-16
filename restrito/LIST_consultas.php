@@ -10,17 +10,17 @@ exitWhenNotLogged($pdo);
 $email = $_SESSION["emailUsuario"];
 
 try{
-    
+
     $sql = <<<SQL
-    SELECT 
-        agenda.dia as dia, 
-        agenda.horario as horario, 
+    SELECT
+        agenda.dia as dia,
+        agenda.horario as horario,
         agenda.nome as paciente,
-        pessoa.sexo as sexo, 
-        pessoa.id_pessoa  
-    FROM agenda 
+        pessoa.sexo as sexo,
+        pessoa.id_pessoa
+    FROM agenda
     INNER JOIN pessoa
-    ON agenda.id_medico = pessoa.id_pessoa 
+    ON agenda.id_medico = pessoa.id_pessoa
     AND pessoa.email = "{$email}"
     SQL;
 
@@ -52,6 +52,8 @@ catch(Exception $e){
 
     <!--Menu de naveção, com links para todas as páginas-->
     <div class="dropdown">
+        <a class="btn btnNav" href="index.html">Home</a>
+
         <button class="btn btnNav dropdown-toggle" type="button" data-bs-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Cadastrar
@@ -97,7 +99,7 @@ catch(Exception $e){
                         $horario = htmlspecialchars($row["horario"]);
                         $paciente = htmlspecialchars($row["paciente"]);
                         $sexo = htmlspecialchars($row["sexo"]);
-                        
+
                         echo <<<HTML
                             <tr class="table-light">
                                 <td>

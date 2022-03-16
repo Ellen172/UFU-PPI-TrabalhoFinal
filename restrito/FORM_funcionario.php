@@ -29,6 +29,8 @@ exitWhenNotLogged($pdo);
 
     <!--Menu de naveção, com links para todas as páginas-->
     <div class="dropdown">
+        <a class="btn btnNav" href="index.html">Home</a>
+
         <button class="btn btnNav dropdown-toggle" type="button" data-bs-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Cadastrar
@@ -193,7 +195,7 @@ exitWhenNotLogged($pdo);
             /*Define quando a função adicionaEstados é executada*/
             const campoEstado = document.querySelector("#estado");
             campoEstado.addEventListener("click", adicionaEstados(campoEstado));
-            
+
             /*Define quando a função de buscar endereço pelo cep é executada*/
             const inputCep = document.querySelector("#cep");
             inputCep.onkeyup = () => buscaEndereco(inputCep.value);

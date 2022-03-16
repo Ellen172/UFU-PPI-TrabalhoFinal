@@ -44,6 +44,8 @@ catch(Exception $e){
 
     <!--Menu de naveção, com links para todas as páginas-->
     <div class="dropdown">
+        <a class="btn btnNav" href="index.html">Home</a>
+
         <button class="btn btnNav dropdown-toggle" type="button" data-bs-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Cadastrar
@@ -86,7 +88,7 @@ catch(Exception $e){
                 <tbody>
                     <?php
                         while($row = $stmt->fetch()){
-                            
+
                             //Prevenção de ataques XSS
                             $id_pessoa = $row["id_pessoa"];
                             $nome = htmlspecialchars($row["nome"]);
@@ -107,7 +109,7 @@ catch(Exception $e){
                             $estado = htmlspecialchars($row["estado"]);
                             $data_contrato = htmlspecialchars($row["data_contrato"]);
                             $salario = htmlspecialchars($row["salario"]);
-                            
+
                             echo <<<HTML
                                 <tr class="table-light">
                                     <td>

@@ -44,6 +44,8 @@ catch(Exception $e){
 
     <!--Menu de naveção, com links para todas as páginas-->
     <div class="dropdown">
+        <a class="btn btnNav" href="index.html">Home</a>
+
         <button class="btn btnNav dropdown-toggle" type="button" data-bs-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Cadastrar
@@ -84,7 +86,7 @@ catch(Exception $e){
 
                     <?php
                     while($row = $stmt->fetch()){
-                        
+
                         //Prevenção de ataques XSS
                         $id_endereco = $row["id_endereco"];
                         $cep = htmlspecialchars($row["cep"]);

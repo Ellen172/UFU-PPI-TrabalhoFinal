@@ -14,7 +14,7 @@ try {
     SQL;
 
     $stmt = $pdo->query($sql);
-} 
+}
 catch (Exception $e) {
     exit('Ocorreu uma falha: ' . $e->getMessage());
 }
@@ -41,6 +41,8 @@ catch (Exception $e) {
 
     <!--Menu de naveção, com links para todas as páginas-->
     <div class="dropdown">
+        <a class="btn btnNav" href="index.html">Home</a>
+        
         <button class="btn btnNav dropdown-toggle" type="button" data-bs-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
             Cadastrar
@@ -105,7 +107,7 @@ catch (Exception $e) {
                         $peso = htmlspecialchars($row['peso']);
                         $altura = htmlspecialchars($row['altura']);
                         $tipoSanguineo = htmlspecialchars($row['tipoSanguineo']);
-                        
+
                         echo <<<HTML
                         <tr class="table-light">
                             <td>
@@ -122,7 +124,7 @@ catch (Exception $e) {
                             <td>$peso</td>
                             <td>$altura</td>
                             <td>$tipoSanguineo</td>
-                        </tr>      
+                        </tr>
                         HTML;
                     }
                     ?>
@@ -131,7 +133,7 @@ catch (Exception $e) {
 
         </main>
     </div>
-    
+
     <!--Rodapé-->
     <footer>
         © Copyright 2021. Todos os direitos reservados.

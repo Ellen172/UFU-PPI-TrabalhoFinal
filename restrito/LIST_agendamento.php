@@ -10,13 +10,13 @@ exitWhenNotLogged($pdo);
 try {
 
     $sql = <<<SQL
-    SELECT 
-        agenda.dia as dia, 
-        agenda.horario as hora, 
-        agenda.nome as nome_paciente, 
-        medico.especialidade as especialidade, 
+    SELECT
+        agenda.dia as dia,
+        agenda.horario as hora,
+        agenda.nome as nome_paciente,
+        medico.especialidade as especialidade,
         pessoa.nome as nome_medico
-    FROM agenda 
+    FROM agenda
     INNER JOIN medico
     ON agenda.id_medico = medico.id_medico
     INNER JOIN pessoa
@@ -51,6 +51,8 @@ catch(Exception $e){
 
     <!--Menu de naveção, com links para todas as páginas-->
     <div class="dropdown">
+        <a class="btn btnNav" href="index.html">Home</a>
+
         <button class="btn btnNav dropdown-toggle" type="button" data-bs-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Cadastrar
@@ -98,7 +100,7 @@ catch(Exception $e){
                         $nome_paciente = htmlspecialchars($row["nome_paciente"]);
                         $especialidade = htmlspecialchars($row["especialidade"]);
                         $nome_medico = htmlspecialchars($row["nome_medico"]);
-                        
+
                         echo <<<HTML
                             <tr class="table-light">
                                 <td>
@@ -116,9 +118,9 @@ catch(Exception $e){
                             HTML;
                     }
 
-                    
 
-                    
+
+
                     ?>
                 </tbody>
             </table>

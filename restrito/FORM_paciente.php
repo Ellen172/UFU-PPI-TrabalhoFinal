@@ -29,6 +29,8 @@ exitWhenNotLogged($pdo);
 
     <!--Menu de naveção, com links para todas as páginas-->
     <div class="dropdown">
+        <a class="btn btnNav" href="index.html">Home</a>
+
         <button class="btn btnNav dropdown-toggle" type="button" data-bs-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
             Cadastrar
@@ -120,7 +122,7 @@ exitWhenNotLogged($pdo);
                     <div class="row m-3 g-3">
                         <div class="col-md-4">
                             <label for="peso" class="form-label">Peso: </label>
-                            <input type="number" step="any" id="peso" name="peso" class="form-control" 
+                            <input type="number" step="any" id="peso" name="peso" class="form-control"
                                 placeholder="00.00 (insira em kg)" required>
                         </div>
                         <div class="col-md-4">
@@ -162,7 +164,7 @@ exitWhenNotLogged($pdo);
     <footer>
         © Copyright 2021. Todos os direitos reservados.
     </footer>
-    
+
     <script src="../js/bootstrap.js"></script>
     <script src="../js/estados.js"></script>
     <script src="../js/buscaEndereco.js"></script>
@@ -177,7 +179,7 @@ exitWhenNotLogged($pdo);
             /*Define quando a função adicionaEstados é executada*/
             const campoEstado = document.querySelector("#estado");
             campoEstado.addEventListener("click", adicionaEstados(campoEstado));
-            
+
             /*Define quando a função de buscar endereço pelo cep é executada*/
             const inputCep = document.querySelector("#cep");
             inputCep.onkeyup = () => buscaEndereco(inputCep.value);
