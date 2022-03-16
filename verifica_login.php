@@ -1,7 +1,7 @@
 <?php
     require_once "conexaoMysql.php";
     session_start();
-    
+
     class RequestResponse
 	{
 		public $success;
@@ -27,20 +27,20 @@
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$email]);
     $row = $stmt->fetch();
-	
+
 	$IsSucess = false;
-	
+
 	if(password_verify($senha, $row['senhaHash'])){
         $IsSucess = true;
 
-        // Armazena dados úteis para confirmação 
+        // Armazena dados úteis para confirmação
         // de login em outros scripts PHP
         $_SESSION['emailUsuario'] = $email;
-        $_SESSION['loginString'] = $senha;   
+        $_SESSION['loginString'] = $senha;
 
-    } 
-    
-    $RequestResponse = new RequestResponse($IsSucess, "restrito/FORM_funcionario.php");
+    }
+
+    $RequestResponse = new RequestResponse($IsSucess, "restrito/index.html");
 
     echo json_encode($RequestResponse);
 ?>
