@@ -18,6 +18,12 @@ exitWhenNotLogged($pdo);
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/style_restrito.css">
     <title>Cadastro de Funcionário</title>
+
+    <style>
+        #infMedico {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
