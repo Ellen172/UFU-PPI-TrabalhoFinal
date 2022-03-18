@@ -42,7 +42,7 @@ catch (Exception $e) {
     <!--Menu de naveção, com links para todas as páginas-->
     <div class="dropdown">
         <a class="btn btnNav" href="index.php">Home</a>
-        
+
         <button class="btn btnNav dropdown-toggle" type="button" data-bs-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
             Cadastrar
@@ -61,6 +61,7 @@ catch (Exception $e) {
             <a class="dropdown-item" id="currently-active-tab" href="LIST_paciente.php">Listar Pacientes</a>
             <a class="dropdown-item" href="LIST_endereco.php">Listar Endereços</a>
             <a class="dropdown-item" href="LIST_agendamento.php">Agendamentos e Consultas dos Clientes</a>
+            <a class="dropdown-item" id="dropdown-medico" href="LIST_consultas.php">Meus Agendamentos e Consultas</a>
         </div>
 
         <a class="btn btnNav" href="logout.php">Logout</a>
