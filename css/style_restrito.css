@@ -36,3 +36,7 @@
     color: azure;
     border-radius: 5px;
 }
+
+#dropdown-medico{
+    display: none;
+}
