@@ -13,6 +13,7 @@ try{
 
     $sql = <<<SQL
     SELECT
+		agenda.id_agenda as id_agenda,
         agenda.dia as dia,
         agenda.horario as horario,
         agenda.nome as paciente,

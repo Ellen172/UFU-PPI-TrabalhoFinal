@@ -11,6 +11,7 @@ try {
 
     $sql = <<<SQL
     SELECT
+		agenda.id_agenda as id_agenda,
         agenda.dia as dia,
         agenda.horario as hora,
         agenda.nome as nome_paciente,
@@ -71,6 +72,7 @@ catch(Exception $e){
             <a class="dropdown-item" href="LIST_paciente.php">Listar Pacientes</a>
             <a class="dropdown-item" href="LIST_endereco.php">Listar Endereços</a>
             <a class="dropdown-item" id="currently-active-tab" href="LIST_agendamento.php">Agendamentos e Consultas dos Clientes</a>
+			<a class="dropdown-item" id="currently-active-tab teste" href="LIST_consulta.php">Meus Agendamentos e Consultas dos Clientes</a>
         </div>
 
         <a class="btn btnNav" href="logout.php">Logout</a>
